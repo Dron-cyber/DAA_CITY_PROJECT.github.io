@@ -123,12 +123,110 @@
         padding: 4px 0;
         border-bottom: 1px solid #33394a;
     }
+    .hamburger {
+    display: none;
+    flex-direction: column;
+    width: 28px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    background: white;
+    margin: 4px 0;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 240px;
+    height: 100%;
+    background: #111827;
+    padding: 40px 20px;
+    transition: 0.4s;
+    z-index: 2000;
+    border-right: 1px solid #333;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu ul li {
+    margin: 20px 0;
+}
+
+.side-menu ul li a {
+    text-decoration: none;
+    color: #e6e6e6;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.side-menu ul li a:hover {
+    color: #60a5fa;
+}
+
+
+.side-menu.active {
+    left: 0;
+}
+@media (max-width: 900px) {
+    .navbar ul {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+    .title {
+        margin-bottom: 100px;
+    }
+
+    section { padding: 40px 6%; }
+}
+
+@media (max-width: 600px) {
+    .navbar h2 { font-size: 18px; }
+
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+
+    .course-box, .content-card {
+        padding: 20px;
+    }
+}
 </style>
 </head>
 <body>
+    <div class="side-menu" id="sideMenu">
+    <ul>
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#project" onclick="closeMenu()">Project</a></li>
+        <li><a href="dron.html" onclick="closeMenu()">Dron</a></li>
+        <li><a href="sunil.html" onclick="closeMenu()">Sunil</a></li>
+        <li><a href="darshan.html" onclick="closeMenu()">Darshan</a></li>
+    </ul>
+</div>
+
+
 
 <nav class="navbar">
     <h2>City Design Project</h2>
+
+    <!-- Hamburger menu for mobile -->
+    <div class="hamburger" onclick="openMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="project.html">Project</a></li>
@@ -137,6 +235,7 @@
         <li><a href="darshan.html">Darshan</a></li>
     </ul>
 </nav>
+
 
 <section id="phase1">
     <h1>Phase 1 – City Planning Overview</h1>
@@ -150,10 +249,10 @@
             IMAGE 1: INFO
         </h2>
         <img src="IMG_20251203_230953.jpg" alt="Chart 2" style="width: 60%"/>
-        <h2>
+        <h2 class="title">
             IMAGE 2:MAP
         </h2>
-        <img src="IMG_20251203_231059.jpg" alt="Chart 1" style="transform: rotate(270deg); margin-top: -130px; margin-bottom: -120px;"/>
+        <img src="IMG_20251203_231059.jpg" alt="Chart 1" style="transform: rotate(270deg); margin-top: -130px; margin-bottom: -130px;"/>
     </div>
 </section>
 
@@ -186,7 +285,7 @@
                 <li>7. Streetlight Maintenance Scheduling</li>
                 <li>8. Library Book Search System</li>
                 <li>9. Pharmacy Inventory Expiry Manager </li>
-                <li>10. Mobile Tower Coverage Gap Finder</li>
+                <li>10.Mobile Tower Coverage Gap Finder</li>
                 <li>11. Market Shop Rent Analysis (Monthly Changes)</li>
             </ul>
         </div>
@@ -224,7 +323,15 @@
         </div>
     </div>
 </section>
+<script>
+function openMenu() {
+    document.getElementById("sideMenu").classList.add("active");
+}
+
+function closeMenu() {
+    document.getElementById("sideMenu").classList.remove("active");
+}
+</script>
 
 </body>
 </html>
-
