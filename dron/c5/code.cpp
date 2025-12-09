@@ -1,4 +1,15 @@
-//this is based on sample data
+/*
+    NOTE:
+    This program uses a sample dataset of city areas and road construction costs,
+    created specifically for demonstrating Kruskal's Algorithm using Union-Find.
+
+    The dataset is not real-world data; it is only for testing, debugging,
+    and illustrating how the algorithm builds a Minimum Spanning Tree (MST).
+
+    The code is fully scalable — more areas, roads, or cost values can be 
+    added without changing the algorithmic logic.
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
