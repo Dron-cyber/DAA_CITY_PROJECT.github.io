@@ -1,1 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies – City Design Project</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="side-menu" id="sideMenu">
+        <ul>
+            <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+            <li><a href="project.html" onclick="closeMenu()">Project</a></li>
+            <li><a href="dron.html" onclick="closeMenu()">Dron</a></li>
+            <li><a href="sunil.html" onclick="closeMenu()">Sunil</a></li>
+            <li><a href="darshan.html" onclick="closeMenu()">Darshan</a></li>
+        </ul>
+    </div>
+
+    <nav class="navbar">
+        <h2>Case Studies</h2>
+        <div class="hamburger" onclick="openMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="dron.html">Dron</a></li>
+            <li><a href="sunil.html">Sunil</a></li>
+            <li><a href="darshan.html">Darshan</a></li>
+        </ul>
+    </nav>
+
+    <section id="case-studies">
+        <h1>Real-World Problem Statements Mapping to Core Data Structures and Algorithms</h1>
+        <br>
+        <div class="case-study-grid" id="caseStudyGrid">
+        </div>
+
+        <div class="explanation-section">
+            <h3>Core Design, Principles, and Data Structures Used</h3>
+            <p>
+                This project integrates powerful algorithmic methods and optimized data structures to deliver high
+                performance,
+                accuracy, and scalability across all urban applications.
+            </p>
+
+            <ul>
+                <li>
+                    <strong>Design Techniques Used:</strong>
+                    The system leverages the Greedy Strategy (used in Dijkstra’s and Kruskal’s algorithms for optimal
+                    local decisions),
+                    Divide and Conquer (applied in Segment Trees and Fenwick Trees), and thoughtful Space–Time
+                    Trade-offs that reduce
+                    processing time through efficient memory usage.
+                </li>
+
+                <li>
+                    <strong>Core Principles Applied:</strong>
+                    Several foundational concepts guide the project, including Connectivity and Reachability in graph
+                    traversal,
+                    Edge Relaxation for shortest path optimization, Precomputation for fast range queries, and the
+                    Cut–Cycle properties
+                    essential to Kruskal’s algorithm. Additional principles include Bit Manipulation in Fenwick Trees,
+                    Heap balance
+                    maintenance, recursive traversal in trees, and systematic search-space exploration in complex
+                    graphs.
+                </li>
+
+                <li>
+                    <strong>Data Structures Employed:</strong>
+                    Key structures include Priority Queues/Heaps for fast min/max access, Tries for efficient
+                    prefix-based lookups,
+                    Segment Trees and Fenwick Trees enabling <i>O(log n)</i> range operations, and Union–Find (DSU) for
+                    quick cycle
+                    detection and connectivity checks.
+                </li>
+
+                <li>
+                    <strong>SDG Mapping:</strong>
+                    This project directly contributes to Sustainable Development Goal 9 (Industry, Innovation, and
+                    Infrastructure)
+                    and SDG 11 (Sustainable Cities and Communities), supporting smarter and more resilient urban
+                    planning.
+                </li>
+            </ul>
+
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent">
+        </div>
+    </div>
+
+    <script>
+
+        function openMenu() {
+            document.getElementById("sideMenu").classList.add("active");
+        }
+        function closeMenu() {
+            document.getElementById("sideMenu").classList.remove("active");
+        }
+        document.addEventListener('click', function (event) {
+            const sideMenu = document.getElementById('sideMenu');
+            const hamburger = document.querySelector('.hamburger');
+            if (!sideMenu.contains(event.target) && !hamburger.contains(event.target) && sideMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+
+
+        const caseStudies = [
+            {
+                id: 'p1',
+                title: 'Optimizing Utility Network Layouts',
+                problem: 'Connect thousands of city infrastructure nodes (power, water, fiber) with the absolute minimum amount of wire or piping length to reduce construction cost and redundancy.',
+                icon: 'fa-network-wired',
+                algo: 'Minimum Spanning Tree (Kruskal’s / Prim’s)',
+                diagram: '',
+                why: 'Modeled as a weighted graph, this problem requires finding a <strong>Minimum Spanning Tree (MST)</strong>. MST algorithms, like <strong>Kruskal\'s</strong> (greedy edge selection using <strong>Union-Find</strong>) or <strong>Prim\'s</strong> (greedy node exploration using a <strong>Priority Queue</strong>), guarantee connectivity across all nodes with the minimum possible total edge weight and without creating expensive cycles.',
+                how: [
+                    'Model the city locations as <strong>nodes (V)</strong> and potential connections as weighted <strong>edges (E)</strong> representing cost/distance.',
+                    'Apply <strong>Kruskal’s algorithm</strong>: Sort edges by weight and iterate, adding edges that don\'t form a cycle.',
+                    'Alternatively, apply <strong>Prim’s algorithm</strong>: Grow a tree from a starting node by always adding the cheapest connection to an unvisited node.',
+                    'The result is a lean tree structure connecting all infrastructure points at minimal cost.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: O(E log V) or O(E log E) standard implementation.
+V = Number of infrastructure nodes (locations).
+E = Number of potential connections between them.
+
+Kruskal's involves sorting edges O(E log E) and Union-Find operations O(E alpha(V)).
+Prim's using a binary heap priority queue takes O(E log V).
+*/
+
+function calculateMSTEfficiency(V, E) {
+    // Using E log V as a representative complexity for Prim's with binary heap
+    let complexity = E * Math.log2(V);
+    console.log("MST (Prim's/Kruskal's) complexity approx " + complexity.toFixed(0) + " operations for V=" + V + ", E=" + E);
+    return complexity;
+}
+`,
+                complexity: 'O(E log V)'
+            },
+            {
+                id: 'p2',
+                title: 'Emergency Vehicle Rapid Response Routing',
+                problem: 'Determine the fastest route for ambulances or fire trucks in real-time, considering live traffic density and roadblocks, to reach crisis locations instantly.',
+                icon: 'fa-truck-medical',
+                algo: 'Dijkstra’s Algorithm / A* Search',
+                diagram: '',
+                why: 'The road network is a graph with dynamic edge weights representing travel time. <strong>Dijkstra’s algorithm</strong> guarantees the shortest path by exploring nodes in increasing order of distance using a <strong>Min-Priority Queue</strong>. <strong>A* Search</strong> improves this by using a heuristic to guide the search toward the destination faster, making it ideal for time-critical routing.',
+                how: [
+                    'Model roads as a graph where <strong>edge weights</strong> represent real-time travel duration derived from sensors.',
+                    'Use a <strong>Min-Heap Priority Queue</strong> to manage intersections to explore, ordered by current shortest time.',
+                    'Run <strong>Dijkstra’s</strong> (or <strong>A*</strong> with a distance heuristic) to find the optimal path from the vehicle to the incident.',
+                    'Continuously update edge weights and re-run if traffic conditions change significantly during transit.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: O(E log V) for Dijkstra using a binary heap.
+V = Number of intersections (nodes).
+E = Number of road segments (edges).
+
+Dijkstra involves extracting minimum V times (O(V log V)) and relaxing edges E times (O(E log V)).
+A* complexity depends on the heuristic but is generally faster in practice, though theoretically similar worst-case.
+*/
+
+function calculateDijkstraEfficiency(V, E) {
+    let complexity = E * Math.log2(V);
+    console.log("Dijkstra complexity approx " + complexity.toFixed(0) + " operations for V=" + V + ", E=" + E);
+    return complexity;
+}
+`,
+                complexity: 'O(E log V)'
+            },
+            {
+                id: 'p3',
+                title: 'Analyzing Connected Green Zones',
+                problem: 'Identify distinct clusters of interconnected parks and green spaces within the city versus isolated patches to improve urban ecological planning and walkability.',
+                icon: 'fa-tree',
+                algo: 'BFS/DFS (Connected Components)',
+                diagram: '',
+                why: 'This is a classic **Connected Components** problem on a graph. By treating parks as nodes and paths as edges, fundamental graph traversal algorithms like <strong>Breadth-First Search (BFS)</strong> or <strong>Depth-First Search (DFS)</strong> can visit every node reachable from a starting point, effectively identifying and labeling distinct isolated clusters in $O(V+E)$ time.',
+                how: [
+                    'Represent the city map as a graph where green areas are <strong>nodes</strong> and connecting paths are <strong>edges</strong>.',
+                    'Maintain a "visited" set for all park nodes.',
+                    'Iterate through all parks. If an unvisited park is found, start a <strong>BFS</strong> or <strong>DFS</strong> traversal to find all connected parks, marking them as one component.',
+                    'The number of times a new traversal starts equals the number of distinct green zones.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: O(V + E)
+V = Number of parks/green spaces.
+E = Number of connecting paths.
+
+BFS or DFS visits every node and every edge exactly once in the entire graph to identify all connected components.
+*/
+
+function calculateTraversalEfficiency(V, E) {
+    let complexity = V + E;
+    console.log("Graph Traversal (BFS/DFS) complexity: " + complexity + " operations for V=" + V + ", E=" + E);
+    return complexity;
+}
+`,
+                complexity: 'O(V + E)'
+            },
+            {
+                id: 'p4',
+                title: 'Smart Power Grid Load Balancing',
+                problem: 'Dynamically distribute electricity demand across the grid to prevent substation overloading during peak usage times and ensure voltage stability.',
+                icon: 'fa-plug',
+                algo: 'Greedy Algorithm & Max-Flow',
+                diagram: '',
+                why: 'The grid needs both immediate reactions and systemic stability. A <strong>Greedy approach</strong> provides instant, locally optimal shifts of load to adjacent under-utilized substations. For overall network stability and to prevent cascading failures, the grid is modeled as a flow network, and <strong>Max-Flow algorithms</strong> (like Edmonds-Karp or Dinic) ensure that power distribution respects the physical capacity limits of transmission lines.',
+                how: [
+                    'Monitor real-time load vs. capacity at all grid substations.',
+                    'For sudden spikes, apply a <strong>Greedy</strong> strategy: instantly shift excess demand to the nearest neighbour with the most spare capacity.',
+                    'Periodically model the entire grid as a flow network, where edge capacities equal transmission line limits.',
+                    'Run a <strong>Max-Flow</strong> algorithm to determine the optimal safe distribution pattern across the entire city network.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: Variable.
+Greedy step: O(1) per substation (checking immediate neighbors).
+Max-Flow (e.g., Edmonds-Karp): O(V E^2) in general case.
+V = Substations, E = Transmission lines.
+
+Max-Flow is computationally intensive but run less frequently than the greedy checks.
+*/
+
+function calculateMaxFlowEfficiency(V, E) {
+    // Using Edmonds-Karp worst-case as an example
+    let complexity = V * E * E;
+    console.log("Max-Flow (Edmonds-Karp) theoretical worst-case: " + complexity + " operations for V=" + V + ", E=" + E);
+    return complexity;
+}
+`,
+                complexity: 'O(V E^2) (Max-Flow)'
+            },
+            {
+                id: 'p5',
+                title: 'Fire Incident Triage & Priority Management',
+                problem: 'Instantly rank multiple simultaneous fire alerts based on severity, occupancy, and building type to dispatch resources to the most critical threats first.',
+                icon: 'fa-fire',
+                algo: 'Priority Queue (Max-Heap)',
+                diagram: '',
+                why: 'In emergency scenarios, sorting all incidents repeatedly is too slow. A <strong>Max-Heap Priority Queue</strong> is the ideal data structure. It allows inserting new incidents in $O(\log N)$ time and, crucially, provides instant $O(1)$ access and $O(\log N)$ extraction of the highest-priority incident, ensuring critical threats are always handled next.',
+                how: [
+                    'Define a dynamic <strong>risk score</strong> function based on sensor inputs, building type, and occupancy data.',
+                    'When an alert is received, calculate its score and insert it into a <strong>Max-Heap</strong>.',
+                    'The dispatch system always peeks at the root of the heap to identify the current most critical incident.',
+                    'Extract the max element to assign resources, then re-heapify to bring the next highest priority to the top.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: O(log N) for insertion and extraction.
+N = Number of active fire incidents.
+
+A binary heap ensures the tree height is logarithmic with respect to the number of elements. Peeking the highest priority is O(1).
+*/
+
+function calculateHeapEfficiency(N) {
+    let logN = Math.log2(N);
+    console.log("Max-Heap insertion/extraction time for N=" + N + " incidents: O(log N) =", logN.toFixed(2));
+    return logN;
+}
+`,
+                complexity: 'O(log N)'
+            },
+            {
+                id: 'p6',
+                title: 'Garbage Truck Route Optimization',
+                problem: 'Calculate the most efficient circular route for sanitation trucks to visit thousands of bins daily, minimizing fuel consumption and operational time.',
+                icon: 'fa-trash',
+                algo: 'TSP Heuristics (e.g., Nearest Neighbor)',
+                diagram: '',
+                why: 'This is the NP-hard <strong>Traveling Salesperson Problem (TSP)</strong>. Finding the mathematically perfect route for thousands of bins is computationally impossible in real-time. Therefore, smart cities rely on <strong>Heuristics</strong>—approximation algorithms like the <strong>Greedy Nearest Neighbor</strong> approach—which trade perfect accuracy for calculating a "good enough" route very quickly ($O(N^2)$).',
+                how: [
+                    'Model all bin locations to be collected as nodes in a complete graph, with edge weights being travel distance/time.',
+                    'Start the truck at the depot.',
+                    'Apply the <strong>Nearest Neighbor heuristic</strong>: form the route by always moving to the closest unvisited bin from the current location.',
+                    'Return to the depot once all bins are visited. Large areas are often split using <strong>Divide & Conquer</strong> before routing.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: O(N^2) for Nearest Neighbor Heuristic.
+N = Number of bins to collect.
+
+For every bin visited, the algorithm searches all remaining unvisited bins to find the nearest one.
+*/
+
+function calculateTSPHeuristicEfficiency(N) {
+    let complexity = N * N;
+    console.log("Nearest Neighbor TSP Heuristic complexity for N=" + N + " bins: " + complexity + " operations.");
+    return complexity;
+}
+`,
+                complexity: 'O(N^2) (Heuristic)'
+            },
+            {
+                id: 'p7',
+                title: 'Dynamic Traffic Light Timing',
+                problem: 'Adjust traffic signal durations in real-time based on current sensor data to minimize idling time and reduce congestion at intersections.',
+                icon: 'fa-traffic-light',
+                algo: 'Greedy Algorithms & Queueing Theory',
+                diagram: '',
+                why: 'Real-time traffic management requires fast, reactive decisions. A <strong>Greedy Algorithm</strong> is used locally at intersections to prioritize the lane with the longest detected queue, making the locally optimal choice to reduce immediate wait times. <strong>Queueing Theory</strong> models are used to analyze arrival and service rates to predict future backups and tune the greedy parameters.',
+                how: [
+                    'Ingest real-time data from inductive loops or cameras indicating queue lengths at each approach.',
+                    'The signal controller applies a <strong>Greedy</strong> logic: if the current phase is about to end, it checks which waiting lane has the longest queue and grants it the next green phase.',
+                    'Use <strong>Queueing Theory</strong> models (e.g., M/M/1 queues) to estimate average wait times and optimize maximum/minimum green signal durations.',
+                    'Coordinate adjacent signals to allow platoons of vehicles to move continuously ("green waves").'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: O(1) per decision cycle per intersection.
+
+The greedy decision at a single intersection involves comparing queue lengths of a fixed, small number of lanes (L). The complexity is effectively constant time relative to overall city size.
+*/
+
+function calculateTrafficDecisionEfficiency(Lanes) {
+    console.log("Greedy signal decision complexity is O(1), requiring checks across fixed " + Lanes + " lanes.");
+    return 1;
+}
+`,
+                complexity: 'O(1) (Per Intersection)'
+            },
+            {
+                id: 'p8',
+                title: 'E-commerce & Logistics Delivery Planning',
+                problem: 'Optimize routes for a fleet of delivery vehicles to serve hundreds of customers efficiently while adhering to truck capacity limits and time windows.',
+                icon: 'fa-truck',
+                algo: 'Vehicle Routing Problem (VRP) & TSP',
+                diagram: '',
+                why: 'This is the <strong>Vehicle Routing Problem (VRP)</strong>, a complex combinatorial challenge. It is typically solved in two stages using a <strong>Divide and Conquer</strong> approach: first, <strong>Clustering</strong> (similar to the <strong>Knapsack Problem</strong>) groups nearby deliveries that fit into one truck\'s capacity. Second, a **TSP Heuristic** determines the optimal sequence for deliveries within each cluster.',
+                how: [
+                    'Use unsupervised machine learning (e.g., K-Means) or geometric approaches to <strong>cluster</strong> delivery locations into groups, ensuring each group respects vehicle capacity constraints.',
+                    'For each resulting cluster, treat it as an independent <strong>Traveling Salesperson Problem (TSP)</strong>.',
+                    'Apply TSP heuristics (like Nearest Neighbor or 2-Opt) to calculate the efficient delivery sequence for that specific truck.',
+                    'Combine the routes for the entire fleet management.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: Dominated by TSP Heuristic, approx O(N^2) or O(N^2 log N) depending on implementation.
+N = Total number of deliveries.
+
+While clustering adds overhead, solving TSP (even heuristically) for the points is usually the most computationally expensive step.
+*/
+
+function calculateVRPEfficiency(N) {
+    // Using N^2 as a representative heuristic complexity
+    let complexity = N * N;
+    console.log("VRP (via TSP heuristics) approximate complexity base for N=" + N + " deliveries: " + complexity);
+    return complexity;
+}
+`,
+                complexity: 'O(N^2) (Heuristic)'
+            },
+            {
+                id: 'p9',
+                title: 'City Disaster Evacuation Planning',
+                problem: 'Determine the safest exit routes and maximum traffic flow capacity during a disaster to evacuate citizens quickly without creating deadly gridlock.',
+                icon: 'fa-route',
+                algo: 'Max-Flow Algorithm & BFS',
+                diagram: '',
+                why: 'Evacuation is a flow optimization problem. The road network is modeled as a graph where edge capacities are road capacities (vehicles/hour). <strong>Breadth-First Search (BFS)</strong> is used initially to find the shortest unweighted paths to safety zones. Crucially, <strong>Max-Flow algorithms</strong> calculate the theoretical maximum number of people that can exit in a given time, and the related **Min-Cut** theorem identifies critical bottlenecks in the infrastructure.',
+                how: [
+                    'Define danger zones (sources) and safe zones (sinks) on the city graph.',
+                    'Use <strong>BFS</strong> to quickly guide individuals to the *nearest* safe zone based on distance.',
+                    'Model road segments with capacities based on lanes and speed limits.',
+                    'Run a <strong>Max-Flow algorithm</strong> to determine the maximum evacuation throughput of the entire network.',
+                    'Analyze the <strong>Min-Cut</strong> edges to identify roads that severely limit flow, prioritizing them for emergency management.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: O(V E^2) for Max-Flow (Edmonds-Karp).
+V = Intersections, E = Road segments.
+
+BFS is O(V+E), but the Max-Flow calculation to determine network capacity and bottlenecks is the dominant computational cost.
+*/
+
+function calculateEvacuationEfficiency(V, E) {
+    // Using Edmonds-Karp worst-case as example
+    let complexity = V * E * E;
+    console.log("Max-Flow based evacuation analysis complexity: " + complexity + " operations for V=" + V + ", E=" + E);
+    return complexity;
+}
+`,
+                complexity: 'O(V E^2) (Max-Flow)'
+            },
+            {
+                id: 'p10',
+                title: 'Traffic Congestion Prediction',
+                problem: 'Forecast future traffic jams using historical data and current patterns to proactively reroute vehicles before gridlock actually occurs.',
+                icon: 'fa-chart-line',
+                algo: 'Pattern Matching / Dynamic Programming',
+                diagram: '',
+                why: 'Predicting congestion involves recognizing temporal sequences in historical data that lead to gridlock. Techniques involving <strong>Pattern Matching</strong> on time-series data or <strong>Dynamic Programming (DP)</strong> can be used. DP is useful for breaking down the complex problem of predicting future states into overlapping sub-problems based on past states and transitions, storing results to avoid redundant computations.',
+                how: [
+                    'Ingest massive amounts of historical data on traffic density, time of day, weather, and events.',
+                    'Use <strong>Pattern Matching</strong> algorithms to scan historical data for sequences currently playing out in real-time.',
+                    'Alternatively, use a <strong>Dynamic Programming</strong> approach to build probabilistic models of state transitions to forecast future density.',
+                    'If a predicted state exceeds road capacity, proactively suggest alternative routes to navigation systems to dissipate the potential jam.'
+                ],
+                complexityCode: `
+/*
+Efficiency Calculation: O(N) per prediction cycle for linear pattern matching.
+N = Size of the relevant historical data window being scanned.
+
+Complexity varies greatly based on the specific model (e.g., simple matching vs. complex deep learning). For standard pattern scanning against historical sequences, it's linear to the data size.
+*/
+
+function calculatePredictionEfficiency(N) {
+    console.log("Linear pattern matching for prediction scales linearly with historical data window size N=" + N);
+    return N;
+}
+`,
+                complexity: 'O(N) (Pattern Scan)'
+            }
+        ]
+            ;
+
+        // --- Card Generation and Modal Logic ---
+        const grid = document.getElementById('caseStudyGrid');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+
+        // 1. Function to create the initial card HTML 
+        function createCard(study) {
+            const card = document.createElement('div');
+            card.className = 'case-study-card';
+            card.setAttribute('data-id', study.id);
+
+            // GitHub link element for the small card
+            const githubLinkCard = document.createElement('a');
+            githubLinkCard.href = study.repoLink;
+            githubLinkCard.className = 'github-link-card';
+            githubLinkCard.target = '_blank';
+            githubLinkCard.innerHTML = '<i class="fab fa-github"></i>';
+
+
+            card.onclick = (e) => {
+                // Prevent modal opening if the GitHub link was clicked
+                if (e.target.closest('.github-link-card')) return;
+                openModal(study.id);
+            };
+
+            card.innerHTML = `
+        <div class="card-title">
+            <i class="fas ${study.icon}"></i>
+            <h3>${study.title}</h3>
+        </div>
+        <p>${study.problem}</p>
+        <div class="algo-used">Algorithm: <strong>${study.algo}</strong></div>
+    `;
+
+            card.appendChild(githubLinkCard);
+            return card;
+        }
+
+        // 2. Insert all cards into the grid on load
+        caseStudies.forEach(study => {
+            grid.appendChild(createCard(study));
+        });
+
+        // 3. Function to open the modal and load content
+        function openModal(id) {
+            const study = caseStudies.find(s => s.id === id);
+            if (!study) return;
+
+            // Remove strong tags from the 'how' list items for cleaner presentation
+            const howList = study.how.map(item => `<li>${item.replace(/<strong[^>]*>|<\/strong>/g, '')}</li>`).join('');
+
+            // Generate the full modal content structure
+            modalContent.innerHTML = `
+        <span class="close-btn" onclick="closeModal(event)">&times;</span>
+        <h2>${study.title}</h2>
+        <div class="algo-used" style="font-size:16px;">Algorithm: <strong>${study.algo}</strong></div>
+        
+        <h4>Problem Statement</h4>
+        <p>${study.problem}</p>
+
+        <h4>Why This Algorithm? (Design Rationale)</h4>
+        <p>${study.why}</p>
+
+        <h4>How It Works (Algorithm Flow)</h4>
+        <ul>${howList}</ul>
+        
+        <h4 style="margin-top: 35px;">Algorithm Flow Diagram</h4>
+        <div class="modal-diagram-space">
+            ${study.diagram}
+            <p>Diagram illustrating the operational flow of <strong>${study.algo}</strong>.</p>
+        </div>
+
+        <h4>Efficiency Calculation and Complexity (${study.complexity})</h4>
+        <p>The calculation below provides the theoretical time complexity (Big O notation) for the core operation(s) of this algorithm, demonstrating its performance scalability:</p>
+        <code>${study.complexityCode}</code>
+        
+        <a href="${study.repoLink}" target="_blank" class="github-btn-modal">
+            <i class="fab fa-github"></i> View Code on GitHub
+        </a>
+    `;
+
+            modalOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 4. Function to close the modal
+        function closeModal(event) {
+            if (event.target.classList.contains('close-btn') || event.target.id === 'modalOverlay') {
+                modalOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
