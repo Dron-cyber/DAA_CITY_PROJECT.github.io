@@ -1,0 +1,21 @@
+ShopID,MarketSegment,InitialRent,MonthlyChange,UpdatedRent,Notes
+S001,Market Circle,18000,500,18500,Lighting upgrade near main gate
+S002,Market Circle,22000,-300,21700,Seasonal discount given
+S003,Market Circle,25000,700,25700,High footfall zone
+S004,Shopping Lane A,15000,200,15200,New signboard installed
+S005,Shopping Lane A,17000,-150,16850,Minor maintenance
+S006,Shopping Lane B,16000,300,16300,Improved lighting
+S007,IT Park Shops,30000,1200,31200,Tech hub expansion impact
+S008,IT Park Shops,28000,900,28900,Increased demand
+S009,IT Park Shops,32000,-500,31500,Temporary reduced activity
+S010,Residential Market A,12000,100,12100,Stable rent
+S011,Residential Market A,13000,150,13150,Routine update
+S012,Residential Market B,11000,-100,10900,Low customer turnout
+S013,Airport Road Shops,25000,800,25800,Prime location influence
+S014,Airport Road Shops,24000,500,24500,Highway construction impact
+S015,Industrial Market Zone,20000,300,20300,Increased worker presence
+S016,Industrial Market Zone,19000,-200,18800,Seasonal dip
+S017,Temple Street Shops,14000,200,14200,Festival-related activity
+S018,Temple Street Shops,14500,250,14750,Footfall increase
+S019,University Road Market,18000,400,18400,Student rush period
+S020,University Road Market,17500,-150,17350,Holiday month effect
