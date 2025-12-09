@@ -1,3 +1,15 @@
+/*
+    NOTE:
+    The book dataset used in this program consists of sample records created 
+    specifically for demonstrating Trie-based prefix matching and optional 
+    binary search operations. These entries represent a realistic but limited 
+    example of library data.
+
+    The system is fully scalable — more books, categories, branches, or 
+    metadata fields can be added easily without modifying the underlying 
+    Trie logic or search functionality.
+*/
+
 #include <iostream>
 #include <vector>
 #include <map>
