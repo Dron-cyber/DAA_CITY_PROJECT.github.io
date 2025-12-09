@@ -1,0 +1,11 @@
+FaultID,Location,Coord_X,Coord_Y,Urgency,Complaints,PriorityScore,LightType,ReportedTime
+F101,Market Circle,42,58,9,14,32,LED,2025-12-08 18:22
+F102,Hospital Road,33,72,8,10,26,Sodium,2025-12-08 19:10
+F103,School Zone East,55,81,7,8,22,LED,2025-12-08 17:50
+F104,Residential Block A1,61,65,5,6,16,Fluorescent,2025-12-08 20:15
+F105,IT & Tech Park Main Road,18,40,10,17,37,LED,2025-12-08 16:40
+F106,Airport Road Junction,12,22,8,12,28,LED,2025-12-08 17:10
+F107,Temple Street,48,75,6,5,17,Sodium,2025-12-08 21:00
+F108,University Road North,70,78,7,9,23,LED,2025-12-08 18:45
+F109,Shopping Complex Lane,53,60,4,3,11,Fluorescent,2025-12-08 20:40
+F110,Industrial Area Gate 2,10,30,9,11,29,Sodium,2025-12-08 15:55
