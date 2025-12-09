@@ -89,7 +89,7 @@ const caseStudies = [
         problem: 'During a fire, efficiently find the shortest, safe exit path inside a home, avoiding all fire-affected areas.',
         icon: 'fa-fire-extinguisher', 
         algo: 'BFS (Breadth-First Search)',
-        diagram: '',
+        diagram: `<img src="./darshan_img/1.png" style="max-width:100%; height:500px;">`,
         why: 'The problem models the home as an unweighted grid graph, where the distance (number of steps) is the cost. BFS is the canonical algorithm for finding the **Shortest Path** in an unweighted graph, ensuring the first route found is the fastest. It uses a **Queue** to explore the path layer by layer, prioritizing the closest cells (Greedy-like selection on distance).',
         how: [
             'Model the home as a grid where rooms/hallways are cells and fire zones are blocked cells.',
@@ -124,7 +124,7 @@ Final Time Complexity = O(R * C) (Linear to the size of the home layout)
         problem: 'Auto-adjust solar panel angles throughout the day to match the sun\'s position and maximize energy absorption, requiring fast angle lookups based on time.',
         icon: 'fa-sun', 
         algo: 'AVL Tree (Height-Balanced BST)',
-        diagram: '',
+        diagram:  `<img src="./darshan_img/2.png" style="max-width:100%; height:500px;">`,
         why: 'The system needs extremely fast lookups and maintenance of a sorted list of optimal angles vs. time. An AVL Tree is a self-balancing Binary Search Tree, ensuring that insertion/update (**rebalancing**) and query operations remain strictly **O(log N)** in the worst case. This adherence to balance is crucial for a real-time system that must avoid performance degradation.',
         how: [
             'Store pre-calculated or sensor-derived optimal angles, indexed by time-of-day, in the AVL Tree.',
@@ -160,7 +160,7 @@ Final Time Complexity = O(log N) for core operations.
         problem: 'Detect hazardous gas regions early and alert nearest safe exit path using fast spatial detection and an orderly alert hierarchy.',
         icon: 'fa-industry', 
         algo: 'DFS/BFS + Binary Tree',
-        diagram: '',
+        diagram:  `<img src="./darshan_img/3.png" style="max-width:100%; height:500px;">`,
         why: 'The system has two parts: spatial detection and alert propagation. **BFS/DFS** is used to model the gas spread on the factory floor (a grid/graph), efficiently finding all affected zones (**Connectivity**). A **Binary Tree** is used for the alert system, allowing for a fast, orderly, and hierarchical propagation of the evacuation signal across the facility\'s zones.',
         how: [
             'Model the facility as a grid graph and initiate BFS from the leak source to simulate gas spread, marking contaminated cells.',
@@ -198,7 +198,7 @@ Final Time Complexity = **O(V + E)** (Graph traversal dominates).
         problem: 'Irrigation must cover full farmland efficiently, optimizing water reach and valve activation without dry areas.',
         icon: 'fa-leaf', 
         algo: 'BFS + Union-Find',
-        diagram: '',
+        diagram: `<img src="./darshan_img/4.png" style="max-width:100%; height:500px;">`,
         why: 'The BFS component finds the nearest water source coverage, treating the field as an unweighted graph. The Union-Find (Disjoint Set Union) structure is critical for efficiently tracking and merging fully irrigated zones (Connectivity) in near constant time $O(\\alpha(N))$, preventing redundant water flow.',
         how: [
             'Model the field as a grid based on soil moisture readings.',
@@ -236,7 +236,7 @@ Final Time Complexity = O(V + E)
         problem: 'Assign beds to continuously arriving patients, prioritizing critical patients first and ensuring the earliest available bed is always used.',
         icon: 'fa-bed', 
         algo: 'Min-Heap (Priority Queue)',
-        diagram: '',
+        diagram: `<img src="./darshan_img/5.png" style="max-width:100%; height:500px;">`,
         why: 'This uses a multi-layered **Greedy** assignment. A Priority Queue (Max-Heap) handles patient urgency (critical patients first). A Min-Heap stores bed-free times, ensuring the earliest available bed is assigned, which minimizes waiting time. Both core operations are \mathbf{O(\log N)} for efficiency.',
         how: [
             'Stream patient entry into a Max-Heap (Priority Queue) based on urgency score (add priority to queue).',
@@ -273,7 +273,7 @@ Final Time Complexity = O(log N) for each patient transaction.
         problem: 'Model airport taxiways as a graph and continuously detect conflicts when multiple aircraft are on intersecting paths.',
         icon: 'fa-plane', 
         algo: 'DFS (Depth-First Search)',
-        diagram: '',
+        diagram: `<img src="./darshan_img/6.png" style="max-width:100%; height:500px;">`,
         why: 'The taxiway system is a graph where the goal is to check for common reachable nodes (intersections). **DFS** is excellent for **Reachability** and **Connectivity** analysis, systematically exploring every potential path from an aircraft\'s position to detect if the path intersects an active route of another aircraft. This depth-first approach is efficient for path checking in the airport graph.',
         how: [
             'Represent the airport taxi-paths as a graph (nodes are intersections, edges are tracks).',
@@ -309,7 +309,7 @@ Final Time Complexity for a single path check: O(V + E) (Linear to the size of t
         problem: 'Detect pipeline leaks early by monitoring flow/pressure anomalies and instantly pinpointing the leak location to alert maintenance teams.',
         icon: 'fa-water', 
         algo: 'Hashing + BFS + Segment Tree',
-        diagram: '',
+        diagram: `<img src="./darshan_img/7.png" style="max-width:100%; height:500px;">`,
         why: 'The solution combines three specialized structures: Hashing provides O(1) lookup for fast sensor ID management. A Segment Tree efficiently monitors live sensor streams to detect pressure drops (anomalies) in O(\log N) time. Finally, BFS uses graph traversal to quickly locate the affected pipe branch and trace the probable leak location (Connectivity).',
         how: [
             'Divide the pipeline into sectors, connecting pressure sensors to nodes.',
@@ -347,7 +347,8 @@ Final Time Complexity = O(log N) (for monitoring) and O(V + E) (for tracing).
         problem: 'Pre-calculate the shortest travel cost (distance/time) between every pair of major city landmarks or hubs for immediate lookup in mapping services.',
         icon: 'fa-map-signs', 
         algo: 'Floyd-Warshall Algorithm',
-        diagram: '[Image illustrating the three nested loops of Floyd-Warshall updating a distance matrix]',
+        diagram:  `<img src="./darshan_img/8.png" style="max-width:100%; height:500px;">`,
+            
         why: 'The **Floyd-Warshall Algorithm is an application of Dynamic Programming and is perfectly suited for the All-Pairs Shortest Path problem. For a relatively static and dense graph (where landmarks connect to many others), its O(V^3) complexity is superior to running Dijkstra\'s algorithm V times (which would be O(V(E + V \log V)) or O(V^2 \log V) for a dense graph). It provides a complete, pre-calculated distance matrix for O(1) lookups.',
         how: [
             'Initialize a distance matrix D where D[i][j] is the cost of the direct road from landmark i to j (or \\infty if no direct path exists).',
@@ -386,7 +387,7 @@ Total Time Complexity = V * V * V = O(V^3)
         problem: 'Optimally assign maintenance vehicles or utility crews to a streaming list of tasks based on proximity and urgency to minimize response time.',
         icon: 'fa-truck-moving', 
         algo: 'Min-Heap (Priority Queue)',
-        diagram: '',
+        diagram:  `<img src="./darshan_img/9.png" style="max-width:100%; height:500px;">`,
         why: 'A Min-Heap provides an efficient implementation of a Priority Queue, which is the ideal Greedy structure here. It ensures the most urgent task (the one with the minimum response time or highest criticality score, represented by the minimum value) is always available for assignment in O(1) time for inspection and O(\log N) time for removal/insertion. This is critical for fast, dynamic, online allocation as new requests arrive.',
         how: [
             'New tasks are inserted into the Min-Heap using a calculated priority score (e.g., response time, urgency, proximity) as the key.',
@@ -424,7 +425,8 @@ Final Time Complexity = **O(log N)** for all critical dynamic operations.
         problem: 'Monitor consumption patterns, compare against legal limits, and instantly identify sudden abnormal withdrawals due to illegal tapping or unauthorized connections.',
         icon: 'fa-tint', 
         algo: 'Trie + AVL Tree + Fenwick Tree',
-        diagram: '[Image illustrating data flow through Trie for ID, AVL for logs, and Fenwick for anomaly detection]',
+        diagram:  `<img src="./darshan_img/10.png" style="max-width:100%; height:500px;">`,
+            
         why: 'This system utilizes three advanced structures: Trie allows fast O(L) lookup for validating registered consumer IDs. AVL Tree keeps consumption log updates balanced and searchable in O(\log N) time. Fenwick Tree enables constant-time prefix-sum checks and O(\log N) updates, making it ideal for live anomaly detection against expected range sums of water draw.',
         how: [
             'Store registered consumer meter IDs in a Trie for real-time validation upon reading arrival.',
