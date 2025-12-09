@@ -1,3 +1,14 @@
+/*
+    NOTE:
+    This program uses a set of sample medicine batch records created 
+    specifically for demonstration and testing of the Min-Heap + Hash Map 
+    inventory system. The dataset represents a small example of how real 
+    pharmacy stock data would look.
+
+    The code is fully scalable — additional batches or new medicine types 
+    can be added easily without modifying the underlying logic.
+*/
+
 #include <iostream>
 #include <queue>
 #include <unordered_map>
