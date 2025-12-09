@@ -1,3 +1,4 @@
+//this is based on sample data (crime.csv)
 #include <iostream>
 #include <vector>
 #include <string>
