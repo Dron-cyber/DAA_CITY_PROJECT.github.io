@@ -90,7 +90,7 @@ const caseStudies = [
         icon: 'fa-route',
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c1',
         algo: 'Dijkstra’s Algorithm',
-        diagram: '',
+        diagram: `<img src="./dron_img/c1.png" style="max-width:100%; height:500px;">`,
         why: 'Dijkstra\'s is used because the road network can be modeled as a weighted graph where edge weights (time/distance) are non-negative. It guarantees the globally shortest path by employing the <strong>Greedy Technique</strong>—always selecting the closest unvisited node—and the <strong>Edge Relaxation</strong> principle to constantly update and improve path distances.',
         how: [
             'Treat every junction as a node and road as an edge with weight (cost).',
@@ -136,8 +136,8 @@ O((V + E) log V)
         icon: 'fa-plane-departure', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c2',
         algo: 'Min-Heap + Sorting',
-        diagram: '',
-        why: 'This is a <strong>Greedy Technique</strong> interval scheduling problem. Sorting the flights by arrival time ensures chronological processing. The <strong>Min-Heap</strong> is used to store gate release times, allowing instant access ($O(\log k)$) to the earliest available gate. This decision-making process minimizes the total number of gates required.',
+        diagram: `<img src="./dron_img/c2.png" style="max-width:100%; height:500px;">`,
+        why: 'This is a <strong>Greedy Technique</strong> interval scheduling problem. Sorting the flights by arrival time ensures chronological processing. The <strong>Min-Heap</strong> is used to store gate release times, allowing instant access (O(\log k)) to the earliest available gate. This decision-making process minimizes the total number of gates required.',
         how: [
             'Flights are first sorted by arrival time.',
             'A Min-Heap maintains the departure/release times of all currently occupied gates.',
@@ -177,7 +177,7 @@ Final Time Complexity = **O(N log N)** `,
         icon: 'fa-map-marked-alt', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c3',
         algo: 'Segment Tree',
-        diagram: '',
+        diagram: `<img src="./dron_img/c3.png" style="max-width:100%; height:500px;">`,
         why: 'The <strong>Segment Tree</strong> is an application of the <strong>Divide and Conquer</strong> and <strong>Space and Time Trade-off</strong> principles. It allows both updates (Point Updates) and range queries (Range Aggregate Queries) to be completed in $O(\log n)$ time, providing quick and dynamic responsiveness for city planners over static array-based systems.',
         how: [
             'The land plots are modeled as an array, over which the Segment Tree is built hierarchically.',
@@ -224,7 +224,7 @@ Final Time Complexity = O(log N) for updates and queries.
         icon: 'fa-shield-alt', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c4',
         algo: 'DFS / BFS + Max-Heap',
-        diagram: '',
+        diagram: `<img src="./dron_img/c4.png" style="max-width:100%; height:500px;">`,
         why: 'This solution uses <strong>DFS/BFS</strong> to explore <strong>Connectivity</strong> and identify distinct clusters (connected components) of high-crime areas on the city grid. The <strong>Max-Heap (Priority Queue)</strong> then ranks these clusters by severity (a <strong>Greedy Technique</strong> for prioritization), ensuring resources are first deployed to the most critical zones.',
         how: [
             'The city is mapped onto a grid. Iterate through each cell/area.',
@@ -270,7 +270,7 @@ Final Time Complexity = O(R * C + H log K)
         icon: 'fa-hard-hat', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c5',
         algo: 'Kruskal’s MST Algorithm',
-        diagram: '',
+        diagram: `<img src="./dron_img/c5.png" style="max-width:100%; height:500px;">`,
         why: 'The problem is solved using the Minimum Spanning Tree (MST) concept. Kruskal\'s algorithm is a <strong>Greedy Technique</strong>: it sorts all potential roads by cost and uses the <strong>Union-Find</strong> data structure to check <strong>Connectivity</strong> and efficiently apply the <strong>Cut and Cycle Properties</strong>, guaranteeing the minimum overall construction cost.',
         how: [
             'Treat city areas as nodes (V) and potential roads as edges (E) with cost as the weight.',
@@ -321,8 +321,8 @@ Final Time Complexity = O(E log E)
         icon: 'fa-parking', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c6',
         algo: 'Min-Heap + Hashing',
-        diagram: '',
-        why: 'This uses a <strong>Min-Heap (Priority Queue)</strong> for instant $O(\log n)$ retrieval of the *closest* (smallest slot number) free slot. The <strong>Hashing</strong> technique (Hash Map) provides $O(1)$ average-case time complexity for tracking occupancy, which is crucial for fast lookup and release operations in a high-traffic system.',
+        diagram: `<img src="./dron_img/c6.png" style="max-width:100%; height:500px;">`,
+        why: 'This uses a <strong>Min-Heap (Priority Queue)</strong> for instant O(\log n) retrieval of the closest (smallest slot number) free slot. The <strong>Hashing</strong> technique (Hash Map) provides O(1) average-case time complexity for tracking occupancy, which is crucial for fast lookup and release operations in a high-traffic system.',
         how: [
             'Initially, all free slot numbers are inserted into a Min-Heap.',
             'On vehicle arrival, the smallest available slot is popped from the heap (Min-Heap property).',
@@ -365,7 +365,7 @@ Final Time Complexity = O(log N) for both Assignment and Release operations.
         icon: 'fa-lightbulb', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c7',
         algo: 'Priority Queue + BFS',
-        diagram: '',
+        diagram: `<img src="./dron_img/c7.png" style="max-width:100%; height:500px;">`,
         why: 'A <strong>Max-Heap (Priority Queue)</strong> implements a <strong>Greedy</strong> scheduling strategy by ensuring the highest urgency fault is addressed first. <strong>BFS (Breadth-First Search)</strong> is then used to find the shortest path (optimizing travel time) from the depot to the prioritized location, minimizing operational delays.',
         how: [
             'Fault reports are inserted into a Max-Heap based on a calculated priority score (importance, number of complaints).',
@@ -411,8 +411,8 @@ Final Time Complexity = O(F log F + F(V + E))
         icon: 'fa-book-open', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c8',
         algo: 'Trie + Binary Search',
-        diagram: '',
-        why: 'The <strong>Trie</strong> (Prefix Tree) is the ideal data structure for auto-complete and prefix matching. It uses the <strong>Space and Time Trade-off</strong> principle to achieve search times that depend only on the length of the query string ($O(L)$), making it significantly faster than typical database lookups for this specific functionality.',
+        diagram: `<img src="./dron_img/c8.png" style="max-width:100%; height:500px;">`,
+        why: 'The <strong>Trie</strong> (Prefix Tree) is the ideal data structure for auto-complete and prefix matching. It uses the <strong>Space and Time Trade-off</strong> principle to achieve search times that depend only on the length of the query string (O(L)), making it significantly faster than typical database lookups for this specific functionality.',
         how: [
             'All book titles are inserted into the Trie, with each node representing a letter.',
             'Searching for a prefix involves navigating the tree based on the input letters.',
@@ -464,12 +464,12 @@ Final Time Complexity (Search): O(L + Z)
         icon: 'fa-chart-line', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c11',
         algo: 'Fenwick Tree (Binary Indexed Tree)',
-        diagram: '',
-        why: 'The <strong>Fenwick Tree</strong> (or Binary Indexed Tree) is highly specialized for fast <strong>Point Updates</strong> and <strong>Range Sum Queries</strong>. It utilizes <strong>Bit Manipulations</strong> and <strong>Pre-Computing</strong> to achieve $O(\log n)$ time complexity for both operations, making it more space-efficient and often faster in practice for range sum queries than a full Segment Tree.',
+        diagram: `<img src="./dron_img/c11.png" style="max-width:100%; height:500px;">`,
+        why: 'The <strong>Fenwick Tree</strong> (or Binary Indexed Tree) is highly specialized for fast <strong>Point Updates</strong> and <strong>Range Sum Queries</strong>. It utilizes <strong>Bit Manipulations</strong> and <strong>Pre-Computing</strong> to achieve O(\log n) time complexity for both operations, making it more space-efficient and often faster in practice for range sum queries than a full Segment Tree.',
         how: [
             'The tree is initialized based on the shop indices.',
-            'For a rent change in a single shop (Point Update), the tree is updated by traversing up the indices, guided by the least significant bit, in $O(\log n)$ time.',
-            'For a range query $[i, j]$ (total rent change), the query is broken down into prefix sums: $PrefixSum[j] - PrefixSum[i-1]$. Prefix sums are computed by cleverly aggregating pre-computed segment sums, also in $O(\log n)$ time.'
+            'For a rent change in a single shop (Point Update), the tree is updated by traversing up the indices, guided by the least significant bit, in O(log n) time.',
+            'For a range query [i, j] (total rent change), the query is broken down into prefix sums: PrefixSum[j] - PrefixSum[i-1]. Prefix sums are computed by cleverly aggregating pre-computed segment sums, also in O(log n) time.'
         ],
         complexityCode: `
 Time Complexity Derivation (Fenwick Tree / Binary Indexed Tree):
@@ -516,8 +516,8 @@ Final Time Complexity = O(log N) for both Update and Query operations.
         icon: 'fa-pills', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c9',
         algo: 'Min-Heap + Hash Map',
-        diagram: '',
-        why: 'This combines the <strong>Greedy Technique</strong> with specialized data structures. The <strong>Min-Heap</strong> stores items prioritized by expiry date, guaranteeing $O(\log n)$ access to the soonest-expiring medicine. The <strong>Hash Map</strong> provides $O(1)$ average-case lookup for checking stock quantities and managing different product types.',
+        diagram: `<img src="./dron_img/c9.png" style="max-width:100%; height:500px;">`,
+        why: 'This combines the <strong>Greedy Technique</strong> with specialized data structures. The <strong>Min-Heap</strong> stores items prioritized by expiry date, guaranteeing O(log n) access to the soonest-expiring medicine. The <strong>Hash Map</strong> provides O(1) average-case lookup for checking stock quantities and managing different product types.',
         how: [
             'Medicines are inserted into a Min-Heap using a pair (expiry\_date, unique\_ID) as the key, ensuring the earliest expiry date is always at the root.',
             'A Hash Map tracks the total quantity available for each unique medicine ID.',
@@ -558,8 +558,8 @@ Final Time Complexity = O(log N) for core operations.
         icon: 'fa-wifi', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c10',
         algo: 'BFS + Segment Tree (or similar 2D structure)',
-        diagram: '',
-        why: 'This uses <strong>BFS</strong> to model signal propagation, treating tower coverage as a graph search problem to find all reachable (covered) cells ($O(V+E)$). Unvisited cells denote gaps. The secondary use of a <strong>Segment Tree</strong> (or a similar structure like a Quad Tree in 2D) allows for $O(\log N)$ aggregation of coverage strength across large zones.',
+        diagram: `<img src="./dron_img/c10.png" style="max-width:100%; height:500px;">`,
+        why: 'This uses <strong>BFS</strong> to model signal propagation, treating tower coverage as a graph search problem to find all reachable (covered) cells (O(V+E)). Unvisited cells denote gaps. The secondary use of a <strong>Segment Tree</strong> (or a similar structure like a Quad Tree in 2D) allows for O(log N) aggregation of coverage strength across large zones.',
         how: [
             'The city is modeled as a grid of cells.',
             'Initiate a BFS simultaneously from all active mobile towers.',
