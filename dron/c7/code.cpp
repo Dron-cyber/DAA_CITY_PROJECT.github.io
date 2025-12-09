@@ -1,3 +1,15 @@
+/*
+    NOTE:
+    This program uses a sample dataset of streetlight faults created specifically 
+    for demonstrating the Max-Heap based priority scheduling and BFS-based routing 
+    algorithm. The dataset models realistic city fault records but is intentionally 
+    limited for clarity.
+
+    The system is fully scalable — more faults, additional attributes, or a real 
+    GIS-based map can be integrated without changing the core priority queue logic 
+    or BFS routing workflow.
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
