@@ -1,1 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies – City Design Project</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="side-menu" id="sideMenu">
+    <ul>
+        <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+        <li><a href="project.html" onclick="closeMenu()">Project</a></li>
+        <li><a href="dron.html" onclick="closeMenu()">Dron</a></li>
+        <li><a href="sunil.html" onclick="closeMenu()">Sunil</a></li>
+        <li><a href="darshan.html" onclick="closeMenu()">Darshan</a></li>
+    </ul>
+</div>
+
+<nav class="navbar">
+    <h2>Case Studies</h2>
+    <div class="hamburger" onclick="openMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="dron.html">Dron</a></li>
+        <li><a href="sunil.html">Sunil</a></li>
+        <li><a href="darshan.html">Darshan</a></li>
+    </ul>
+</nav>
+
+<section id="case-studies">
+    <h1>Algorithm-Driven Urban Solutions</h1>
+    <p style="text-align:center; font-size:18px;">
+        Applying core Design and Analysis of Algorithms (DAA) concepts to solve real-world city design challenges.
+    </p>
+
+    <div class="case-study-grid" id="caseStudyGrid">
+    </div>
+    
+    <div class="explanation-section">
+        <h3>Core Design, Principles, and Data Structures Used</h3>
+        <p>This project utilizes a range of advanced algorithmic techniques to ensure high efficiency and scalability across all urban solutions.</p>
+        <ul>
+            <li>**Design Techniques Used:** We rely heavily on the **Greedy Technique** (for optimal selections in Kruskal's and Dijkstra's), **Divide and Conquer** (for tree-based structures like Segment/Fenwick Trees), and the crucial **Space and Time Trade-off** (using specialized data structures to minimize time complexity at the cost of slightly more memory).</li>
+            <li>**Core Principles Applied:** The project extensively uses principles such as **Connectivity and Reachability** (Graph Traversal), **Edge Relaxation** (Dijkstra's), **Pre-Computing** (Segment/Fenwick Trees), the **Cut and Cycle Properties** (Kruskal's), **Bit Manipulations** (Fenwick Tree), and **Balance Maintenance** (Heaps). We also leverage **Recursion** in tree traversals and **Search Space Exploration** in graph algorithms.</li>
+            <li>**Data Structures Employed:** Solutions rely on **Heap/Priority Queue** for instant min/max retrieval, **Trie** for fast string prefix searching, **Segment Tree** and **Fenwick Tree** for $O(\log n)$ range queries/updates, and **Union-Find (Disjoint Set Union)** for cycle detection.</li>
+            <li>**SDG Mapping:** This work directly supports **SDG 9** (Infrastructure) and **SDG 11** (Sustainable Cities).</li>
+        </ul>
+    </div>
+</section>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-content" id="modalContent">
+    </div>
+</div>
+
+<script>
+
+function openMenu() {
+    document.getElementById("sideMenu").classList.add("active");
+}
+function closeMenu() {
+    document.getElementById("sideMenu").classList.remove("active");
+}
+document.addEventListener('click', function(event) {
+    const sideMenu = document.getElementById('sideMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!sideMenu.contains(event.target) && !hamburger.contains(event.target) && sideMenu.classList.contains('active')) {
+        closeMenu();
+    }
+});
+
+
+
+const caseStudies = [
+    {
+        id: 'c1',
+        title: 'Optimal Routes for City Transport',
+        problem: 'Efficiently find the shortest/fastest route between any two points in the city’s road network.',
+        icon: 'fa-route', 
+        algo: 'Dijkstra’s Algorithm',
+        diagram: '',
+        why: 'Dijkstra\'s is used because the road network can be modeled as a weighted graph where edge weights (time/distance) are non-negative. It guarantees the globally shortest path by employing the <strong>Greedy Technique</strong>—always selecting the closest unvisited node—and the <strong>Edge Relaxation</strong> principle to constantly update and improve path distances.',
+        how: [
+            'Treat every junction as a node and road as an edge with weight (cost).',
+            'Initialize distances and use a Min-Heap (Priority Queue) to always select the unvisited node with the smallest distance.',
+            'Apply Edge Relaxation: Check neighbors to see if a shorter path exists through the current node; if so, update the neighbor\'s distance.',
+            'Continue until the destination is reached, building the Shortest Path Tree.'
+        ],
+        complexityCode: `
+/* Efficiency Calculation: O((V + E) log V)
+V = Number of vertices (junctions)
+E = Number of edges (roads)
+
+The complexity is derived from:
+1. Heap Operations (Extract Min): O(V log V) for extracting each of the V vertices once.
+2. Edge Relaxations: O(E log V) for checking each of the E edges once, potentially leading to a heap update.
+
+Overall Time Complexity: O(V log V + E log V) = O((V + E) log V). This makes it highly suitable for large-scale, sparse road networks.
+*/
+
+function calculateDijkstraEfficiency(V, E) {
+    // A simplified representation of the dominant time complexity factor
+    let complexity = (V + E) * Math.log2(V); 
+    console.log("Dijkstra's time complexity for V=" + V + ", E=" + E + ":", complexity.toFixed(2), "units");
+    return complexity;
+}
+`,
+        complexity: 'O((V + E) log V)'
+    },
+    {
+        id: 'c2',
+        title: 'Airport Flight Gate Assignment',
+        problem: 'Assign gates to arriving/departing flights to maximize gate use and ensure no schedule overlaps.',
+        icon: 'fa-plane-departure', 
+        algo: 'Min-Heap + Sorting',
+        diagram: '',
+        why: 'This is a <strong>Greedy Technique</strong> interval scheduling problem. Sorting the flights by arrival time ensures chronological processing. The <strong>Min-Heap</strong> is used to store gate release times, allowing instant access ($O(\log k)$) to the earliest available gate. This decision-making process minimizes the total number of gates required.',
+        how: [
+            'Flights are first sorted by arrival time.',
+            'A Min-Heap maintains the departure/release times of all currently occupied gates.',
+            'For each flight: If the heap\'s minimum element (earliest free gate time) is less than or equal to the flight\'s arrival time, that gate is reused (pop and push new departure time).',
+            'Otherwise, a new gate is assigned (push the new departure time).'
+        ],
+        complexityCode: `
+/*
+Efficiency Calculation: O(N log N)
+N = Number of flights.
+
+The complexity is dominated by two sequential steps:
+1. Sorting: O(N log N) for the initial sort of all N flights.
+2. Heap Operations: O(N log K) for N heap insertions and deletions, where K is the maximum number of gates (K < N).
+
+Overall Time Complexity: O(N log N + N log K) = O(N log N), ensuring high scalability for busy airports.
+*/
+
+function calculateGateAssignmentEfficiency(N) {
+    let complexity = N * Math.log2(N);
+    console.log("Gate Assignment time complexity for N=" + N + ":", complexity.toFixed(2), "units");
+    return complexity;
+}
+`,
+        complexity: 'O(N log N)'
+    },
+    {
+        id: 'c3',
+        title: 'Land Allotment Query System',
+        problem: 'Manage city land plots requiring fast range-based queries (e.g., free plots between X and Y) and dynamic updates (land allocation/release).',
+        icon: 'fa-map-marked-alt', 
+        algo: 'Segment Tree',
+        diagram: '',
+        why: 'The <strong>Segment Tree</strong> is an application of the <strong>Divide and Conquer</strong> and <strong>Space and Time Trade-off</strong> principles. It allows both updates (Point Updates) and range queries (Range Aggregate Queries) to be completed in $O(\log n)$ time, providing quick and dynamic responsiveness for city planners over static array-based systems.',
+        how: [
+            'The land plots are modeled as an array, over which the Segment Tree is built hierarchically.',
+            'Each node stores an aggregated value (e.g., total occupied land) for its specific range of plots.',
+            'Updates (allocating/releasing a plot) traverse one path from the leaf to the root, taking $O(\log n)$ time.',
+            'Queries efficiently combine the aggregated data from relevant nodes to cover the requested range, also taking $O(\log n)$ time.'
+        ],
+        complexityCode: `
+/*
+Efficiency Calculation: O(log N) for both Update and Query
+N = Number of land plots (size of the base array).
+
+The logarithmic time complexity arises because the tree is balanced (depth is log N), and operations only need to navigate a single path (updates) or a small, fixed number of paths (queries) down the tree.
+*/
+
+function calculateSegmentTreeEfficiency(N) {
+    let logN = Math.log2(N);
+    console.log("Segment Tree Query/Update time complexity for N=" + N + ": O(log N) =", logN.toFixed(2), "units");
+    return logN;
+}
+`,
+        complexity: 'O(log N)'
+    },
+    {
+        id: 'c4',
+        title: 'Crime Hotspot Detection',
+        problem: 'Identify and rank clusters of high-crime areas to efficiently deploy police and resources.',
+        icon: 'fa-shield-alt', 
+        algo: 'DFS / BFS + Max-Heap',
+        diagram: '',
+        why: 'This solution uses <strong>DFS/BFS</strong> to explore <strong>Connectivity</strong> and identify distinct clusters (connected components) of high-crime areas on the city grid. The <strong>Max-Heap (Priority Queue)</strong> then ranks these clusters by severity (a <strong>Greedy Technique</strong> for prioritization), ensuring resources are first deployed to the most critical zones.',
+        how: [
+            'The city is mapped onto a grid. Iterate through each cell/area.',
+            'If a cell exceeds the crime threshold, initiate a DFS or BFS to find all connected adjacent cells that also exceed the threshold, marking them as visited.',
+            'The search calculates the total size or severity score of the connected cluster.',
+            'This score is pushed into a Max-Heap, which can instantly retrieve the largest/most severe hotspot.'
+        ],
+        complexityCode: `
+/*
+Efficiency Calculation: O(R * C + H log K)
+R, C = Dimensions of the map/grid (R*C = total cells).
+H = Total number of hotspots found. K = Top N hotspots needed.
+
+The traversal component (DFS/BFS) visits every cell at most once: O(R * C). The Max-Heap operations for ranking H hotspots takes O(H log K). The overall complexity is fast, bounded primarily by the size of the map.
+*/
+
+function calculateHotspotDetectionEfficiency(R, C, H) {
+    let traversal = R * C;
+    let complexity = traversal + H * Math.log2(10); // Assuming Top K = 10
+    console.log("Hotspot Detection time complexity for R=" + R + ", C=" + C + ":", complexity.toFixed(2), "units");
+    return complexity;
+}
+`,
+        complexity: 'O(R*C + H log K)'
+    },
+    {
+        id: 'c5',
+        title: 'Road Building Cost Minimization',
+        problem: 'Design a new road network that connects all major city areas with the absolute minimum total construction cost.',
+        icon: 'fa-hard-hat', 
+        algo: 'Kruskal’s MST Algorithm',
+        diagram: '',
+        why: 'The problem is solved using the Minimum Spanning Tree (MST) concept. Kruskal\'s algorithm is a <strong>Greedy Technique</strong>: it sorts all potential roads by cost and uses the <strong>Union-Find</strong> data structure to check <strong>Connectivity</strong> and efficiently apply the <strong>Cut and Cycle Properties</strong>, guaranteeing the minimum overall construction cost.',
+        how: [
+            'Treat city areas as nodes (V) and potential roads as edges (E) with cost as the weight.',
+            'Sort all edges by cost (ascending).',
+            'Initialize the Union-Find (Disjoint Set Union) structure where each area is its own set.',
+            'Iterate through the sorted edges: Add an edge to the MST only if its two endpoints belong to different sets (i.e., it doesn\'t form a cycle).',
+            'Perform the union operation to merge the sets of the two connected areas. Stop when V-1 edges are included.'
+        ],
+        complexityCode: `
+/*
+Efficiency Calculation: O(E log E) or O(E log V)
+E = Number of possible roads (edges)
+V = Number of areas (vertices)
+
+The complexity is dominated by the initial sort of all edges, O(E log E). The subsequent Union-Find operations are nearly constant time (amortized O(α(V))).
+
+Overall Time Complexity: O(E log E).
+*/
+
+function calculateKruskalEfficiency(V, E) {
+    let logE = Math.log2(E);
+    let complexity = E * logE;
+    console.log("Kruskal's time complexity for E=" + E + ":", complexity.toFixed(2), "units");
+    return complexity;
+}
+`,
+        complexity: 'O(E log E)'
+    },
+    {
+        id: 'c6',
+        title: 'Mall Parking Allocation',
+        problem: 'Efficiently assign the closest available parking slot to an arriving vehicle and track occupancy.',
+        icon: 'fa-parking', 
+        algo: 'Min-Heap + Hashing',
+        diagram: '',
+        why: 'This uses a <strong>Min-Heap (Priority Queue)</strong> for instant $O(\log n)$ retrieval of the *closest* (smallest slot number) free slot. The <strong>Hashing</strong> technique (Hash Map) provides $O(1)$ average-case time complexity for tracking occupancy, which is crucial for fast lookup and release operations in a high-traffic system.',
+        how: [
+            'Initially, all free slot numbers are inserted into a Min-Heap.',
+            'On vehicle arrival, the smallest available slot is popped from the heap (Min-Heap property).',
+            'The slot is assigned, and the assignment is recorded in a Hash Map (Vehicle ID → Slot ID).',
+            'On vehicle exit, the slot number is pushed back into the Min-Heap, restoring its availability.'
+        ],
+        complexityCode: `
+/*
+Efficiency Calculation: O(log N) for Assignment and Release
+N = Total number of parking slots (size of the heap).
+
+The time is governed by the heap operations (insert/delete), which are logarithmic. Hashing operations are amortized O(1). This solution is highly efficient for dynamic, high-traffic parking systems.
+*/
+
+function calculateParkingEfficiency(N) {
+    let logN = Math.log2(N);
+    console.log("Parking Allocation time complexity for N=" + N + ": O(log N) =", logN.toFixed(2), "units");
+    return logN;
+}
+`,
+        complexity: 'O(log N)'
+    },
+    {
+        id: 'c7',
+        title: 'Streetlight Maintenance Scheduling',
+        problem: 'Prioritize and efficiently route maintenance teams to repair faulty streetlights based on urgency.',
+        icon: 'fa-lightbulb', 
+        algo: 'Priority Queue + BFS',
+        diagram: '',
+        why: 'A <strong>Max-Heap (Priority Queue)</strong> implements a <strong>Greedy</strong> scheduling strategy by ensuring the highest urgency fault is addressed first. <strong>BFS (Breadth-First Search)</strong> is then used to find the shortest path (optimizing travel time) from the depot to the prioritized location, minimizing operational delays.',
+        how: [
+            'Fault reports are inserted into a Max-Heap based on a calculated priority score (importance, number of complaints).',
+            'The most urgent fault is popped from the heap.',
+            'BFS is run on the city\'s street graph from the maintenance team\'s current location to the fault location to find the quickest path.',
+            'After repair, the team repeats the process by addressing the next highest priority fault.'
+        ],
+        complexityCode: `
+/*
+Efficiency Calculation: O(F log F + F * (V + E))
+F = Number of faulty lights (size of the heap).
+V = Number of junctions, E = Number of roads (Graph size).
+
+The overall time involves O(F log F) for heap operations and O(V + E) for each of the F BFS searches.
+*/
+
+function calculateMaintenanceEfficiency(F, V, E) {
+    let complexity = (F * Math.log2(F)) + (F * (V + E));
+    console.log("Maintenance Scheduling time complexity for F=" + F + ", V+E=" + (V+E) + ":", complexity.toFixed(2), "units");
+    return complexity;
+}
+`,
+        complexity: 'O(F log F + F(V+E))'
+    },
+    {
+        id: 'c8',
+        title: 'Library Book Search System',
+        problem: 'Enable fast searching and prefix matching for book titles in a large city library database.',
+        icon: 'fa-book-open', 
+        algo: 'Trie + Binary Search',
+        diagram: '',
+        why: 'The <strong>Trie</strong> (Prefix Tree) is the ideal data structure for auto-complete and prefix matching. It uses the <strong>Space and Time Trade-off</strong> principle to achieve search times that depend only on the length of the query string ($O(L)$), making it significantly faster than typical database lookups for this specific functionality.',
+        how: [
+            'All book titles are inserted into the Trie, with each node representing a letter.',
+            'Searching for a prefix involves navigating the tree based on the input letters.',
+            'Once the prefix node is reached, all strings in the subtree rooted at that node are collected as valid suggestions.',
+            'Binary Search can be used as a secondary mechanism for fast lookup within sorted lists of books in specific categories.'
+        ],
+        complexityCode: `
+/*
+Efficiency Calculation (Search): O(L + Z)
+L = Length of the query string (the prefix).
+Z = Total number of matching suggestions found.
+
+Search time is exceptionally fast because it does not depend on the total number of books (N) but only on the length of the input and the number of results to display. Insertion time is proportional to the total length of all book titles.
+*/
+
+function calculateTrieSearchEfficiency(L, Z) {
+    let complexity = L + Z;
+    console.log("Trie Search time complexity for L=" + L + ", Z=" + Z + ":", complexity.toFixed(2), "units (Proportional to search length)");
+    return complexity;
+}
+`,
+        complexity: 'O(L + Z)'
+    },
+    {
+        id: 'c11',
+        title: 'Market Shop Rent Analysis (Monthly Changes)',
+        problem: 'Quickly query the cumulative change in shop rents within any market segment following frequent monthly updates.',
+        icon: 'fa-chart-line', 
+        algo: 'Fenwick Tree (Binary Indexed Tree)',
+        diagram: '',
+        why: 'The <strong>Fenwick Tree</strong> (or Binary Indexed Tree) is highly specialized for fast <strong>Point Updates</strong> and <strong>Range Sum Queries</strong>. It utilizes <strong>Bit Manipulations</strong> and <strong>Pre-Computing</strong> to achieve $O(\log n)$ time complexity for both operations, making it more space-efficient and often faster in practice for range sum queries than a full Segment Tree.',
+        how: [
+            'The tree is initialized based on the shop indices.',
+            'For a rent change in a single shop (Point Update), the tree is updated by traversing up the indices, guided by the least significant bit, in $O(\log n)$ time.',
+            'For a range query $[i, j]$ (total rent change), the query is broken down into prefix sums: $PrefixSum[j] - PrefixSum[i-1]$. Prefix sums are computed by cleverly aggregating pre-computed segment sums, also in $O(\log n)$ time.'
+        ],
+        complexityCode: `
+/*
+Efficiency Calculation: O(log N) for both Update and Query
+N = Number of shops/segments.
+
+Fenwick Tree is highly efficient for this specific combination of dynamic updates and aggregate queries. The logarithmic complexity arises from its structure based on the binary representation of indices.
+*/
+
+function calculateFenwickTreeEfficiency(N) {
+    let logN = Math.log2(N);
+    console.log("Fenwick Tree Query/Update time complexity for N=" + N + ": O(log N) =", logN.toFixed(2), "units");
+    return logN;
+}
+`,
+        complexity: 'O(log N)'
+    }
+];
+
+// --- Card Generation and Modal Logic ---
+const grid = document.getElementById('caseStudyGrid');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+
+// 1. Function to create the initial card HTML 
+function createCard(study) {
+    const card = document.createElement('div');
+    card.className = 'case-study-card';
+    card.setAttribute('data-id', study.id);
+    
+    // GitHub link element for the small card
+    const githubLinkCard = document.createElement('a');
+    githubLinkCard.href = study.repoLink;
+    githubLinkCard.className = 'github-link-card';
+    githubLinkCard.target = '_blank';
+    githubLinkCard.innerHTML = '<i class="fab fa-github"></i>';
+
+    
+    card.onclick = (e) => {
+        // Prevent modal opening if the GitHub link was clicked
+        if (e.target.closest('.github-link-card')) return;
+        openModal(study.id);
+    };
+
+    card.innerHTML = `
+        <div class="card-title">
+            <i class="fas ${study.icon}"></i>
+            <h3>${study.title}</h3>
+        </div>
+        <p>${study.problem}</p>
+        <div class="algo-used">Algorithm: <strong>${study.algo}</strong></div>
+    `;
+
+    card.appendChild(githubLinkCard);
+    return card;
+}
+
+// 2. Insert all cards into the grid on load
+caseStudies.forEach(study => {
+    grid.appendChild(createCard(study));
+});
+
+// 3. Function to open the modal and load content
+function openModal(id) {
+    const study = caseStudies.find(s => s.id === id);
+    if (!study) return;
+
+    // Remove strong tags from the 'how' list items for cleaner presentation
+    const howList = study.how.map(item => `<li>${item.replace(/<strong[^>]*>|<\/strong>/g, '')}</li>`).join('');
+
+    // Generate the full modal content structure
+    modalContent.innerHTML = `
+        <span class="close-btn" onclick="closeModal(event)">&times;</span>
+        <h2>${study.title}</h2>
+        <div class="algo-used" style="font-size:16px;">Algorithm: <strong>${study.algo}</strong></div>
+        
+        <h4>Problem Statement</h4>
+        <p>${study.problem}</p>
+
+        <h4>Why This Algorithm? (Design Rationale)</h4>
+        <p>${study.why}</p>
+
+        <h4>How It Works (Algorithm Flow)</h4>
+        <ul>${howList}</ul>
+        
+        <h4 style="margin-top: 35px;">Algorithm Flow Diagram</h4>
+        <div class="modal-diagram-space">
+            ${study.diagram}
+            <p>Diagram illustrating the operational flow of <strong>${study.algo}</strong>.</p>
+        </div>
+
+        <h4>Efficiency Calculation and Complexity (${study.complexity})</h4>
+        <p>The calculation below provides the theoretical time complexity (Big O notation) for the core operation(s) of this algorithm, demonstrating its performance scalability:</p>
+        <code>${study.complexityCode}</code>
+        
+        <a href="${study.repoLink}" target="_blank" class="github-btn-modal">
+            <i class="fab fa-github"></i> View Code on GitHub
+        </a>
+    `;
+
+    modalOverlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; 
+}
+
+// 4. Function to close the modal
+function closeModal(event) {
+    if (event.target.classList.contains('close-btn') || event.target.id === 'modalOverlay') {
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
+    }
+}
+</script>
+
+</body>
+</html>
