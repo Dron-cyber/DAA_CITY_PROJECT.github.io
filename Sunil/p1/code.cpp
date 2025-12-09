@@ -1,83 +1,67 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <numeric>
+#include <bits/stdc++.h>
+using namespace std;
 
-// Structure to represent a weighted edge
-struct Edge {
-    int u, v, weight;
-    // Overload the < operator for sorting
-    bool operator<(const Edge& other) const {
-        return weight < other.weight;
-    }
-};
+// Problem: Optimizing Utility Network Layouts using Minimum Spanning Tree
+// Technique: Kruskal's Algorithm + Union-Find (Disjoint Set Union)
+// Input: n nodes, m edges, followed by m lines (u v w)
+// Output: Minimum total cost + edges selected
 
-// Union-Find Data Structure (Disjoint Set Union) to detect cycles
 struct DSU {
-    std::vector<int> parent;
+    vector<int> parent, rank;
     DSU(int n) {
-        parent.resize(n + 1);
-        // Initialize each node as its own parent
-        std::iota(parent.begin(), parent.end(), 0);
+        parent.resize(n+1);
+        rank.resize(n+1, 0);
+        for(int i = 1; i <= n; i++) parent[i] = i;
     }
-    // Find the representative of the set containing i with path compression
-    int find(int i) {
-        if (parent[i] == i)
-            return i;
-        return parent[i] = find(parent[i]);
+    int find(int x) {
+        if(parent[x] != x) parent[x] = find(parent[x]);
+        return parent[x];
     }
-    // Unite the sets containing i and j
-    void unite(int i, int j) {
-        int root_i = find(i);
-        int root_j = find(j);
-        if (root_i != root_j) {
-            parent[root_i] = root_j;
+    void unite(int a, int b) {
+        a = find(a);
+        b = find(b);
+        if(a != b) {
+            if(rank[a] < rank[b]) swap(a, b);
+            parent[b] = a;
+            if(rank[a] == rank[b]) rank[a]++;
         }
     }
 };
 
 int main() {
-    // --- Hardcoded Sample Input (representing data from CSV) ---
-    int num_nodes = 5; // Number of city infrastructure nodes
-    int num_edges = 7; // Number of potential connections
-    std::vector<Edge> edges = {
-        {1, 2, 10}, {1, 3, 5},
-        {2, 3, 8}, {2, 4, 12},
-        {3, 4, 7}, {3, 5, 15},
-        {4, 5, 9}
-    };
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    std::cout << "--- Optimizing Utility Network Layout ---" << std::endl;
-    std::cout << "Nodes: " << num_nodes << ", Potential Connections: " << num_edges << std::endl;
-    std::cout << "-----------------------------------------" << std::endl;
+    int n, m;
+    cin >> n >> m;
 
-    // Step 1: Sort all edges in non-decreasing order of their weight
-    std::sort(edges.begin(), edges.end());
+    vector<array<int,3>> edges(m);
+    for(int i = 0; i < m; i++) {
+        cin >> edges[i][0] >> edges[i][1] >> edges[i][2];
+    }
 
-    DSU dsu(num_nodes);
-    long long mst_weight = 0;
-    std::vector<Edge> mst_edges;
+    // Sort edges by weight
+    sort(edges.begin(), edges.end(), [](auto &a, auto &b) {
+        return a[2] < b[2];
+    });
 
-    // Step 2: Iterate through sorted edges and pick those that don't form a cycle
-    for (const auto& edge : edges) {
-        int u = edge.u;
-        int v = edge.v;
-        int weight = edge.weight;
+    DSU dsu(n);
+    int mst_cost = 0;
+    vector<array<int,3>> mst_edges;
 
-        // Check if including this edge forms a cycle
-        if (dsu.find(u) != dsu.find(v)) {
-            // If not, include it in the MST and unite the sets
+    for(auto &e : edges) {
+        int u = e[0], v = e[1], w = e[2];
+        if(dsu.find(u) != dsu.find(v)) {
             dsu.unite(u, v);
-            mst_weight += weight;
-            mst_edges.push_back(edge);
+            mst_cost += w;
+            mst_edges.push_back({u, v, w});
         }
     }
 
-    // Output Results
-    std::cout << "Minimum Total Cost/Length: " << mst_weight << std::endl;
-    std::cout << "Selected Connections for Optimal Layout:" << std::endl;
-    for (const auto& edge : mst_edges) {
-        std::cout << "Node " << edge.u << " -- Node " << edge.v << " (Cost: " << edge.weight << ")" << std::endl;
+    cout << "Minimum Total Cost: " << mst_cost << "\n";
+    cout << "Edges in MST:\n";
+    for(auto &e : mst_edges) {
+        cout << e[0] << " " << e[1] << " " << e[2] << "\n";
     }
 
     return 0;
