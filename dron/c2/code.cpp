@@ -1,3 +1,15 @@
+/*
+    NOTE:
+    This program demonstrates the gate assignment algorithm using a sample set 
+    of flight records entered by the user. The input dataset is only for 
+    illustration and testing of the greedy scheduling logic that assigns gates 
+    based on arrival and departure times.
+
+    The system is fully scalable — larger datasets, real airport schedules, or 
+    CSV-based inputs can be integrated without modifying the core heap-based 
+    gate allocation algorithm.
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
