@@ -178,7 +178,7 @@ Final Time Complexity = **O(N log N)** `,
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c3',
         algo: 'Segment Tree',
         diagram: `<img src="./dron_img/c3.png" style="max-width:100%; height:500px;">`,
-        why: 'The <strong>Segment Tree</strong> is an application of the <strong>Divide and Conquer</strong> and <strong>Space and Time Trade-off</strong> principles. It allows both updates (Point Updates) and range queries (Range Aggregate Queries) to be completed in $O(\log n)$ time, providing quick and dynamic responsiveness for city planners over static array-based systems.',
+        why: 'The <strong>Segment Tree</strong> is an application of the <strong>Divide and Conquer</strong> and <strong>Space and Time Trade-off</strong> principles. It allows both updates (Point Updates) and range queries (Range Aggregate Queries) to be completed in O(log n) time, providing quick and dynamic responsiveness for city planners over static array-based systems.',
         how: [
             'The land plots are modeled as an array, over which the Segment Tree is built hierarchically.',
             'Each node stores an aggregated value (e.g., total occupied land) for its specific range of plots.',
@@ -516,7 +516,7 @@ Final Time Complexity = O(log N) for both Update and Query operations.
         icon: 'fa-pills', 
         repoLink:'https://github.com/Dron-cyber/DAA_CITY_PROJECT.github.io/tree/main/dron/c9',
         algo: 'Min-Heap + Hash Map',
-        diagram: `<img src="./dron_img/c9.png" style="max-width:100%; height:500px;">`,
+        diagram: `<img src="./dron_img/c9 .png" style="max-width:100%; height:500px;">`,
         why: 'This combines the <strong>Greedy Technique</strong> with specialized data structures. The <strong>Min-Heap</strong> stores items prioritized by expiry date, guaranteeing O(log n) access to the soonest-expiring medicine. The <strong>Hash Map</strong> provides O(1) average-case lookup for checking stock quantities and managing different product types.',
         how: [
             'Medicines are inserted into a Min-Heap using a pair (expiry\_date, unique\_ID) as the key, ensuring the earliest expiry date is always at the root.',
