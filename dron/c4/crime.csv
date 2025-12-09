@@ -1,0 +1,240 @@
+row,col,place_name,crime_score
+1,1,Central Market,2
+1,2,Central Market,5
+1,3,Central Market,7
+1,4,Central Market,8
+1,5,Central Market,3
+1,6,Railway Station Road,1
+1,7,Old Bus Stand,0
+1,8,Central Market,6
+1,9,Central Market,7
+1,10,Railway Colony,2
+1,11,Railway Colony,1
+1,12,Old Bus Stand,0
+1,13,Shopping Street,4
+1,14,Shopping Street,6
+1,15,Shopping Street,8
+
+2,1,Central Market,3
+2,2,Central Market,6
+2,3,Central Market,7
+2,4,Railway Station Road,2
+2,5,Railway Station Road,1
+2,6,Old Bus Stand,0
+2,7,Shopping Street,5
+2,8,Shopping Street,6
+2,9,Shopping Street,8
+2,10,Shopping Street,7
+2,11,Railway Colony,3
+2,12,Railway Colony,1
+2,13,Old Bus Stand,0
+2,14,Shopping Street,4
+2,15,Shopping Street,6
+
+3,1,Railway Colony,1
+3,2,Railway Colony,2
+3,3,Central Market,6
+3,4,Central Market,7
+3,5,Central Market,8
+3,6,Railway Station Road,3
+3,7,Railway Station Road,2
+3,8,Old Bus Stand,1
+3,9,Shopping Street,6
+3,10,Shopping Street,7
+3,11,Old Bus Stand,0
+3,12,Railway Colony,2
+3,13,Railway Colony,3
+3,14,Shopping Street,6
+3,15,Shopping Street,7
+
+4,1,Residential Block A,0
+4,2,Residential Block A,1
+4,3,Residential Block A,2
+4,4,Residential Block A,6
+4,5,Residential Block A,7
+4,6,Residential Block A,8
+4,7,Residential Block A,5
+4,8,Residential Block B,1
+4,9,Residential Block B,0
+4,10,Residential Block B,3
+4,11,Residential Block B,6
+4,12,Residential Block B,7
+4,13,Residential Block B,8
+4,14,Residential Block C,6
+4,15,Residential Block C,1
+
+5,1,Residential Block A,2
+5,2,Residential Block A,3
+5,3,Residential Block A,0
+5,4,Residential Block A,1
+5,5,Residential Block B,6
+5,6,Residential Block B,7
+5,7,Residential Block B,8
+5,8,Residential Block B,6
+5,9,Residential Block B,3
+5,10,Residential Block C,1
+5,11,Residential Block C,0
+5,12,Residential Block C,4
+5,13,Residential Block C,6
+5,14,Residential Block C,7
+5,15,Residential Block C,8
+
+6,1,Residential Block A,3
+6,2,Residential Block A,6
+6,3,Residential Block B,7
+6,4,Residential Block B,8
+6,5,Residential Block B,2
+6,6,Residential Block B,1
+6,7,Residential Block C,0
+6,8,Residential Block C,6
+6,9,Residential Block C,7
+6,10,Residential Block C,8
+6,11,Residential Block C,3
+6,12,Residential Block C,2
+6,13,Residential Block C,1
+6,14,Residential Block C,6
+6,15,Residential Block C,7
+
+7,1,Old City,1
+7,2,Old City,2
+7,3,Old City,3
+7,4,Old City,6
+7,5,Slum Area,7
+7,6,Slum Area,8
+7,7,Slum Area,6
+7,8,Old City,3
+7,9,Old City,2
+7,10,Old City,1
+7,11,Slum Area,0
+7,12,Slum Area,6
+7,13,Slum Area,7
+7,14,Slum Area,8
+7,15,Slum Area,6
+
+8,1,Slum Area,0
+8,2,Slum Area,1
+8,3,Slum Area,6
+8,4,Slum Area,7
+8,5,Slum Area,8
+8,6,Slum Area,7
+8,7,Slum Area,6
+8,8,Old City,3
+8,9,Old City,1
+8,10,Old City,0
+8,11,Old City,2
+8,12,Slum Area,6
+8,13,Slum Area,7
+8,14,Slum Area,8
+8,15,Slum Area,6
+
+9,1,Old City,2
+9,2,Old City,3
+9,3,Slum Area,6
+9,4,Slum Area,1
+9,5,Slum Area,0
+9,6,Old City,2
+9,7,Slum Area,6
+9,8,Slum Area,7
+9,9,Slum Area,8
+9,10,Slum Area,6
+9,11,Old City,3
+9,12,Old City,1
+9,13,Old City,0
+9,14,Old City,4
+9,15,Old City,6
+
+10,1,IT Park,1
+10,2,IT Park,6
+10,3,IT Park,7
+10,4,IT Park,8
+10,5,Commercial Hub,2
+10,6,Commercial Hub,1
+10,7,Commercial Hub,0
+10,8,Commercial Hub,6
+10,9,Commercial Hub,7
+10,10,Commercial Hub,8
+10,11,IT Park Extension,3
+10,12,IT Park Extension,2
+10,13,IT Park Extension,6
+10,14,IT Park Extension,7
+10,15,IT Park Extension,8
+
+11,1,IT Park,0
+11,2,IT Park,1
+11,3,IT Park,6
+11,4,IT Park,7
+11,5,Commercial Hub,8
+11,6,Commercial Hub,3
+11,7,Commercial Hub,2
+11,8,Commercial Hub,6
+11,9,Commercial Hub,7
+11,10,Commercial Hub,8
+11,11,IT Park Extension,3
+11,12,IT Park Extension,1
+11,13,IT Park Extension,6
+11,14,IT Park Extension,7
+11,15,IT Park Extension,8
+
+12,1,IT Park,3
+12,2,IT Park,6
+12,3,IT Park,7
+12,4,IT Park,8
+12,5,Commercial Hub,2
+12,6,Commercial Hub,1
+12,7,Commercial Hub,0
+12,8,IT Park Extension,6
+12,9,IT Park Extension,7
+12,10,IT Park Extension,8
+12,11,IT Park Extension,3
+12,12,IT Park Extension,0
+12,13,IT Park Extension,2
+12,14,IT Park Extension,6
+12,15,IT Park Extension,7
+
+13,1,Airport Road,2
+13,2,Airport Road,3
+13,3,Airport Road,1
+13,4,Industrial Area,6
+13,5,Industrial Area,7
+13,6,Industrial Area,8
+13,7,Industrial Area,6
+13,8,Industrial Belt,3
+13,9,Industrial Belt,1
+13,10,Airport Zone,0
+13,11,Airport Zone,2
+13,12,Airport Zone,6
+13,13,Airport Zone,7
+13,14,Industrial Belt,8
+13,15,Industrial Belt,6
+
+14,1,Airport Road,1
+14,2,Airport Road,2
+14,3,Industrial Area,6
+14,4,Industrial Area,7
+14,5,Industrial Area,8
+14,6,Industrial Area,7
+14,7,Industrial Area,6
+14,8,Industrial Belt,3
+14,9,Industrial Belt,1
+14,10,Airport Zone,0
+14,11,Airport Zone,2
+14,12,Airport Zone,6
+14,13,Airport Zone,7
+14,14,Industrial Belt,8
+14,15,Industrial Belt,6
+
+15,1,Airport Road,0
+15,2,Airport Road,1
+15,3,Industrial Area,6
+15,4,Industrial Area,7
+15,5,Industrial Area,8
+15,6,Industrial Belt,3
+15,7,Industrial Belt,2
+15,8,Industrial Belt,6
+15,9,Industrial Belt,7
+15,10,Airport Zone,8
+15,11,Airport Zone,3
+15,12,Airport Zone,1
+15,13,Airport Zone,6
+15,14,Industrial Belt,7
+15,15,Industrial Belt,8
