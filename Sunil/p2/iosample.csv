@@ -1,0 +1,21 @@
+Section,Description,Value1,Value2,Value3
+INPUT,Number of Intersections (V),5,,
+INPUT,Number of Roads (E),7,,
+
+INPUT,Road,From,To,TravelTime
+Edge,1,2,10
+Edge,1,3,5
+Edge,2,3,8
+Edge,2,4,12
+Edge,3,4,7
+Edge,3,5,15
+Edge,4,5,9
+
+INPUT,Starting Node,1,,
+
+OUTPUT,Node,FastestTime,
+Result,1,0
+Result,2,10
+Result,3,5
+Result,4,12
+Result,5,21
