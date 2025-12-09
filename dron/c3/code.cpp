@@ -1,3 +1,13 @@
+/*
+    NOTE:
+    This program demonstrates a dynamic land-allocation system using a Segment Tree.
+    The initial plot statuses are sample input provided by the user only for
+    testing the allocation, release, and range-query operations.
+
+    The code is fully scalable — larger datasets, real city layouts, or CSV-based
+    inputs can be integrated without changing the core Segment Tree logic.
+*/
+
 #include <iostream>
 #include <vector>
 #include <cmath>
