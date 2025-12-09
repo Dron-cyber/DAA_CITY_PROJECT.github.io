@@ -1,2 +1,12 @@
-problem,sample_input,sample_output
-"Max element in array","5\n3 8 1 12 7","12"
+Problem Title,Problem Statement,Input,Output
+"Emergency Vehicle Rapid Response Routing (Dijkstra)","Determine the fastest route for ambulances or fire trucks in real-time, considering traffic density and roadblocks. Use Dijkstra's Algorithm or A* Search to find the shortest path from source to destination.","5 7
+1 2 10
+1 3 5
+2 3 2
+2 4 1
+3 2 3
+3 4 9
+4 5 4
+Source Node: 1
+Destination Node: 5","Shortest Path: 1 -> 3 -> 2 -> 4 -> 5
+Total Travel Time: 12"
