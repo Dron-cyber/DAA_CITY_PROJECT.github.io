@@ -1,0 +1,14 @@
+Field,Value
+Problem Title,Smart Power Grid Load Balancing (Greedy & Max-Flow)
+Problem Statement,Dynamically distribute electricity demand across the grid to prevent substation overloading during peak usage times and ensure voltage stability.
+
+Input,Number of substations and transmission lines: 4 5
+Input,Transmission line: 1 2 100
+Input,Transmission line: 1 3 50
+Input,Transmission line: 2 3 50
+Input,Transmission line: 2 4 50
+Input,Transmission line: 3 4 100
+Input,Source Substation: 1
+Input,Sink Substation: 4
+
+Output,Maximum electricity flow from substation 1 to 4: 150
