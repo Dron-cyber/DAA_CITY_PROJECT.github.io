@@ -1,0 +1,17 @@
+Field,Value
+Problem Title,Fire Incident Triage & Priority Management (Max-Heap)
+Problem Statement,Instantly rank multiple simultaneous fire alerts based on severity, occupancy, and building type to dispatch resources to the most critical threats first.
+
+Input,Number of incidents: 5
+Input,Incident 1: severity 9, occupancy 10, building_type 3
+Input,Incident 2: severity 7, occupancy 15, building_type 2
+Input,Incident 3: severity 10, occupancy 5, building_type 5
+Input,Incident 4: severity 6, occupancy 20, building_type 1
+Input,Incident 5: severity 8, occupancy 12, building_type 4
+
+Output,Dispatch order of incidents (highest priority first):
+Output,Incident 1 with risk score 89
+Output,Incident 5 with risk score 82
+Output,Incident 2 with risk score 76
+Output,Incident 3 with risk score 75
+Output,Incident 4 with risk score 68
