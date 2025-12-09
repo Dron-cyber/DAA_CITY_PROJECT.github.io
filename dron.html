@@ -53,7 +53,7 @@
         <p>This project utilizes a range of advanced algorithmic techniques to ensure high efficiency and scalability across all urban solutions.</p>
         <ul>
             <li><strong>Design Techniques Used:</strong> We rely heavily on the Greedy Technique (for optimal selections in Kruskal's and Dijkstra's), Divide and Conquer (for tree-based structures like Segment/Fenwick Trees), and the crucial Space and Time Trade-off (using specialized data structures to minimize time complexity at the cost of slightly more memory).</li>
-            <li><strong>Core Principles Applied:</strong> The project extensively uses principles such as Connectivity and Reachability (Graph Traversal), Edge Relaxation (Dijkstra's), Pre-Computing (Segment/Fenwick Trees), the Cut and Cycle Properties (Kruskal's), Bit Manipulations (Fenwick Tree), and Balance Maintenance (Heaps). We also leverage Recursion in tree traversals and Search Space Exploration in graph algorithms.</li>
+            <li><strong>Core Principles Applied:</strong> The project extensively uses principles such as Connectivity and Reachability** (Graph Traversal), Edge Relaxation (Dijkstra's), Pre-Computing (Segment/Fenwick Trees), the Cut and Cycle Properties (Kruskal's), Bit Manipulations (Fenwick Tree), and Balance Maintenance (Heaps). We also leverage Recursion in tree traversals and Search Space Exploration in graph algorithms.</li>
             <li><strong>Data Structures Employed:</strong> Solutions rely on Heap/Priority Queue for instant min/max retrieval, Trie for fast string prefix searching, Segment Tree and Fenwick Tree for $O(\log n)$ range queries/updates, and Union-Find (Disjoint Set Union) for cycle detection.</li>
             <li><strong>SDG Mapping:</strong> This work directly supports SDG 9 (Infrastructure) and SDG 11 (Sustainable Cities).</li>
         </ul>
@@ -64,7 +64,6 @@
     <div class="modal-content" id="modalContent">
     </div>
 </div>
-
 <script>
 
 function openMenu() {
@@ -99,23 +98,33 @@ const caseStudies = [
             'Continue until the destination is reached, building the Shortest Path Tree.'
         ],
         complexityCode: `
-/* Efficiency Calculation: O((V + E) log V)
-V = Number of vertices (junctions)
-E = Number of edges (roads)
+Time Complexity Derivation (Using Binary Min-Heap):
 
-The complexity is derived from:
-1. Heap Operations (Extract Min): O(V log V) for extracting each of the V vertices once.
-2. Edge Relaxations: O(E log V) for checking each of the E edges once, potentially leading to a heap update.
+Assumptions:
+V = Number of Vertices (Junctions)
+E = Number of Edges (Roads)
+The algorithm iterates V times (once per vertex) and checks E edges (once per edge).
 
-Overall Time Complexity: O(V log V + E log V) = O((V + E) log V). This makes it highly suitable for large-scale, sparse road networks.
-*/
+Step 1: Initialization and First Insertions
+- Initializing distances and adding all V vertices to the Priority Queue.
+- Cost: O(V) (for initialization) + O(V log V) (for V insertions)
+- Total: O(V log V)
 
-function calculateDijkstraEfficiency(V, E) {
-    // A simplified representation of the dominant time complexity factor
-    let complexity = (V + E) * Math.log2(V); 
-    console.log("Dijkstra's time complexity for V=" + V + ", E=" + E + ":", complexity.toFixed(2), "units");
-    return complexity;
-}
+Step 2: V Extractions (Main Loop)
+- The loop runs V times, and in each iteration, the minimum distance vertex is extracted from the Min-Heap.
+- Cost per Extract Min: O(log V)
+- Total Cost: V * O(log V) = O(V log V)
+
+Step 3: E Edge Relaxations (Inner Loop)
+- Every edge E is processed once. Checking an edge might lead to a "Decrease Key" operation (updating a neighbor's distance in the heap).
+- Cost per Decrease Key: O(log V)
+- Total Cost: E * O(log V) = O(E log V)
+
+Overall Time Complexity:
+Sum of all steps: O(V log V) + O(V log V) + O(E log V)
+Simplifying: O(2V log V + E log V)
+Factoring out log V and dropping the constant:
+O((V + E) log V)
 `,
         complexity: 'O((V + E) log V)'
     },
@@ -134,23 +143,29 @@ function calculateDijkstraEfficiency(V, E) {
             'Otherwise, a new gate is assigned (push the new departure time).'
         ],
         complexityCode: `
-/*
-Efficiency Calculation: O(N log N)
-N = Number of flights.
+Time Complexity Derivation (Using Sorting + Binary Min-Heap):
 
-The complexity is dominated by two sequential steps:
-1. Sorting: O(N log N) for the initial sort of all N flights.
-2. Heap Operations: O(N log K) for N heap insertions and deletions, where K is the maximum number of gates (K < N).
+Assumptions:
+N = Total Number of Flights
+K = Maximum Number of Gates needed (K <= N)
 
-Overall Time Complexity: O(N log N + N log K) = O(N log N), ensuring high scalability for busy airports.
-*/
+Step 1: Initial Sorting of Flights
+- Purpose: Sort all N flights by their arrival time to enable chronological, greedy processing.
+- Cost: N * O(log N) = O(N log N)
 
-function calculateGateAssignmentEfficiency(N) {
-    let complexity = N * Math.log2(N);
-    console.log("Gate Assignment time complexity for N=" + N + ":", complexity.toFixed(2), "units");
-    return complexity;
-}
-`,
+Step 2: Processing Flights and Heap Operations (The Main Loop)
+- Purpose: Iterate through the sorted flights, using the Min-Heap (size K) to track the earliest available gate time.
+- Operations: Each of the N flights results in one Extract Min and one Insert/Update operation on the heap.
+- Cost per operation: O(log K)
+- Total Cost: N * O(log K) = O(N log K)
+
+Overall Time Complexity:
+Sum of all steps: (Step 1) + (Step 2)
+Total Time Complexity = O(N log N) + O(N log K) 
+
+Since K <= N, the term O(N log N) (from the initial sorting) dominates the total cost.
+
+Final Time Complexity = **O(N log N)** `,
         complexity: 'O(N log N)'
     },
     {
@@ -168,18 +183,34 @@ function calculateGateAssignmentEfficiency(N) {
             'Queries efficiently combine the aggregated data from relevant nodes to cover the requested range, also taking $O(\log n)$ time.'
         ],
         complexityCode: `
-/*
-Efficiency Calculation: O(log N) for both Update and Query
-N = Number of land plots (size of the base array).
+Time Complexity Derivation (Segment Tree):
 
-The logarithmic time complexity arises because the tree is balanced (depth is log N), and operations only need to navigate a single path (updates) or a small, fixed number of paths (queries) down the tree.
-*/
+Assumptions:
+N = Number of elements in the base array (Land Plots)
+The Segment Tree is a balanced binary tree built over the array.
 
-function calculateSegmentTreeEfficiency(N) {
-    let logN = Math.log2(N);
-    console.log("Segment Tree Query/Update time complexity for N=" + N + ": O(log N) =", logN.toFixed(2), "units");
-    return logN;
-}
+Step 1: Tree Construction (Preprocessing)
+- Purpose: Build the Segment Tree structure from the base array.
+- Operation: Traversing the array and recursively building the tree.
+- Cost: Since the tree has O(N) nodes and each node is processed once (summing its children), the construction time is linear.
+- Total Cost: O(N)
+
+Step 2: Point Update (Land Allocation/Release)
+- Purpose: Change the value of a single element in the base array and update the aggregated values in the tree.
+- Operation: The update only needs to traverse a single path from the leaf node (the plot) up to the root.
+- Cost per traversal: The height of the balanced binary tree is O(log N).
+- Total Cost: O(log N)
+
+Step 3: Range Query (Finding total occupied space in a zone [i, j])
+- Purpose: Query the aggregated value over a specified range [i, j].
+- Operation: The query traverses the tree, breaking the range into O(log N) canonical segments (tree nodes) that cover the range exactly.
+- Cost per query: The number of nodes accessed is bounded by O(log N) on the left side and O(log N) on the right side of the tree.
+- Total Cost: O(log N)
+
+Final Time Complexity:
+The two most critical operations (Update and Query) are both logarithmic.
+
+Final Time Complexity = O(log N) for updates and queries.
 `,
         complexity: 'O(log N)'
     },
@@ -198,20 +229,33 @@ function calculateSegmentTreeEfficiency(N) {
             'This score is pushed into a Max-Heap, which can instantly retrieve the largest/most severe hotspot.'
         ],
         complexityCode: `
-/*
-Efficiency Calculation: O(R * C + H log K)
-R, C = Dimensions of the map/grid (R*C = total cells).
-H = Total number of hotspots found. K = Top N hotspots needed.
+Time Complexity Derivation (DFS/BFS + Max-Heap):
 
-The traversal component (DFS/BFS) visits every cell at most once: O(R * C). The Max-Heap operations for ranking H hotspots takes O(H log K). The overall complexity is fast, bounded primarily by the size of the map.
-*/
+Assumptions:
+R = Rows of the city grid
+C = Columns of the city grid
+V (Vertices) = R * C (Total number of cells/areas)
+E (Edges) = O(R * C) (Number of connections between cells)
+H = Total number of distinct Hotspot Clusters found
+K = Number of Top Hotspots to retrieve (Size of the Max-Heap, usually a small constant like 10)
 
-function calculateHotspotDetectionEfficiency(R, C, H) {
-    let traversal = R * C;
-    let complexity = traversal + H * Math.log2(10); // Assuming Top K = 10
-    console.log("Hotspot Detection time complexity for R=" + R + ", C=" + C + ":", complexity.toFixed(2), "units");
-    return complexity;
-}
+Step 1: Grid Traversal and Cluster Identification
+- Purpose: Iterate through every cell (vertex) on the grid and use Depth-First Search (DFS) or Breadth-First Search (BFS) to identify all connected components (clusters) that exceed the crime threshold.
+- Operation: Since every cell/vertex is visited at most once, and every link/edge is checked at most once, the time complexity for graph traversal is proportional to V + E.
+- Total Cost: O(V + E) = O(R * C)
+
+Step 2: Ranking Hotspots (Max-Heap Operations)
+- Purpose: Insert the size/severity score of each of the H identified clusters into a Max-Heap to prioritize the largest/most critical ones.
+- Operation: H insertions/updates into a heap of size K.
+- Cost per operation: O(log K)
+- Total Cost: H * O(log K) = O(H log K)
+
+Overall Time Complexity:
+The overall time is the sum of the cluster finding (Step 1) and the ranking (Step 2).
+
+Total Time Complexity = O(R * C) + O(H log K)
+
+Final Time Complexity = O(R * C + H log K)
 `,
         complexity: 'O(R*C + H log K)'
     },
@@ -231,22 +275,37 @@ function calculateHotspotDetectionEfficiency(R, C, H) {
             'Perform the union operation to merge the sets of the two connected areas. Stop when V-1 edges are included.'
         ],
         complexityCode: `
-/*
-Efficiency Calculation: O(E log E) or O(E log V)
-E = Number of possible roads (edges)
-V = Number of areas (vertices)
+Time Complexity Derivation (Kruskal's MST Algorithm):
 
-The complexity is dominated by the initial sort of all edges, O(E log E). The subsequent Union-Find operations are nearly constant time (amortized O(α(V))).
+Assumptions:
+V = Number of Vertices (City Areas)
+E = Number of Edges (Possible Roads)
+Data Structure: Union-Find (Disjoint Set Union) with path compression and union by rank/size.
 
-Overall Time Complexity: O(E log E).
-*/
+Step 1: Sorting Edges
+- Purpose: Sort all E potential roads by their construction cost in ascending order.
+- Algorithm Used: Standard Comparison Sort (e.g., MergeSort or HeapSort).
+- Cost: E * O(log E)
+- Total Cost: O(E log E)
 
-function calculateKruskalEfficiency(V, E) {
-    let logE = Math.log2(E);
-    let complexity = E * logE;
-    console.log("Kruskal's time complexity for E=" + E + ":", complexity.toFixed(2), "units");
-    return complexity;
-}
+Step 2: Initialize Union-Find
+- Purpose: Create V disjoint sets, one for each area (vertex).
+- Operation: V initialization operations.
+- Total Cost: O(V)
+
+Step 3: Edge Processing and Union-Find Operations (Main Loop)
+- Purpose: Iterate through the sorted edges and add an edge to the MST if it does not form a cycle (checked by Union-Find).
+- Operations: The loop runs E times, and each iteration performs two Find operations (check for cycle) and at most one Union operation (add edge).
+- Cost per operation: The amortized time complexity for Find and Union operations with modern optimizations is nearly constant, denoted as O(alpha(V)), where alpha(V) is the inverse Ackermann function, which grows extremely slowly (always < 5 for practical inputs).
+- Total Cost: E * O(alpha(V))
+
+Overall Time Complexity:
+The overall time is the sum of the three steps.
+Total Time Complexity = O(E log E) + O(V) + O(E * alpha(V))
+
+Since O(E log E) is typically much larger than the Union-Find cost, and V <= E in any connected graph:
+
+Final Time Complexity = O(E log E)
 `,
         complexity: 'O(E log E)'
     },
@@ -265,18 +324,31 @@ function calculateKruskalEfficiency(V, E) {
             'On vehicle exit, the slot number is pushed back into the Min-Heap, restoring its availability.'
         ],
         complexityCode: `
-/*
-Efficiency Calculation: O(log N) for Assignment and Release
-N = Total number of parking slots (size of the heap).
+Time Complexity Derivation (Min-Heap + Hashing):
 
-The time is governed by the heap operations (insert/delete), which are logarithmic. Hashing operations are amortized O(1). This solution is highly efficient for dynamic, high-traffic parking systems.
-*/
+Assumptions:
+N = Total Number of Parking Slots
+The system relies on a Min-Heap (Priority Queue) to store available slot IDs and a Hash Map (Hash Table) to track occupied slots.
 
-function calculateParkingEfficiency(N) {
-    let logN = Math.log2(N);
-    console.log("Parking Allocation time complexity for N=" + N + ": O(log N) =", logN.toFixed(2), "units");
-    return logN;
-}
+Step 1: Vehicle Arrival (Assignment)
+- Purpose: Assign the closest (lowest ID) available slot to the arriving vehicle.
+- Operation: Requires extracting the minimum element (the lowest slot ID) from the Min-Heap.
+- Cost per Extract Min: O(log N)
+- Operation: Recording the assignment in the Hash Map (License Plate -> Slot ID).
+- Cost per Hash Insert: O(1) (Amortized)
+- Total Cost for Assignment: O(log N) + O(1) = O(log N)
+
+Step 2: Vehicle Exit (Release)
+- Purpose: Release the occupied slot and make it available again.
+- Operation: Look up the slot ID in the Hash Map (O(1)) and remove the entry.
+- Operation: Inserting the newly free slot ID back into the Min-Heap.
+- Cost per Heap Insert: O(log N)
+- Total Cost for Release: O(1) + O(log N) = O(log N)
+
+Overall Time Complexity:
+The complexity of the system is dominated by the logarithmic time required for Heap operations (insertion and deletion/extraction).
+
+Final Time Complexity = O(log N) for both Assignment and Release operations.
 `,
         complexity: 'O(log N)'
     },
@@ -295,19 +367,33 @@ function calculateParkingEfficiency(N) {
             'After repair, the team repeats the process by addressing the next highest priority fault.'
         ],
         complexityCode: `
-/*
-Efficiency Calculation: O(F log F + F * (V + E))
-F = Number of faulty lights (size of the heap).
-V = Number of junctions, E = Number of roads (Graph size).
+Time Complexity Derivation (Max-Heap + BFS):
 
-The overall time involves O(F log F) for heap operations and O(V + E) for each of the F BFS searches.
-*/
+Assumptions:
+F = Number of faulty lights (size of the heap/jobs)
+V = Number of Vertices (Junctions) in the road network
+E = Number of Edges (Roads) in the road network
+Data Structure: Max-Heap (Priority Queue) for scheduling, Graph representation for road network.
 
-function calculateMaintenanceEfficiency(F, V, E) {
-    let complexity = (F * Math.log2(F)) + (F * (V + E));
-    console.log("Maintenance Scheduling time complexity for F=" + F + ", V+E=" + (V+E) + ":", complexity.toFixed(2), "units");
-    return complexity;
-}
+Step 1: Fault Prioritization (Heap Operations)
+- Purpose: Maintain the set of F faults and repeatedly extract the one with the highest urgency score.
+- Operation: Involves F extractions from the Max-Heap.
+- Cost per operation: O(log F)
+- Total Cost for Heap Operations: F * O(log F) = O(F log F)
+
+Step 2: Routing the Maintenance Team (Graph Search)
+- Purpose: For each of the F prioritized faults, calculate the fastest route from the depot/team's current location to the fault location.
+- Algorithm Used: Breadth-First Search (BFS) is used to find the shortest path in an unweighted graph, or can represent the cost of traversing the road network (V+E).
+- Operation: BFS is run F separate times (once per job).
+- Cost per BFS run: O(V + E)
+- Total Cost for Routing: F * O(V + E)
+
+Overall Time Complexity:
+The overall time is the sum of the two sequential, independent processes.
+
+Total Time Complexity = O(F log F) + O(F * (V + E))
+
+Final Time Complexity = O(F log F + F(V + E))
 `,
         complexity: 'O(F log F + F(V+E))'
     },
@@ -326,22 +412,43 @@ function calculateMaintenanceEfficiency(F, V, E) {
             'Binary Search can be used as a secondary mechanism for fast lookup within sorted lists of books in specific categories.'
         ],
         complexityCode: `
-/*
-Efficiency Calculation (Search): O(L + Z)
-L = Length of the query string (the prefix).
-Z = Total number of matching suggestions found.
+Time Complexity Derivation (Trie / Prefix Tree):
 
-Search time is exceptionally fast because it does not depend on the total number of books (N) but only on the length of the input and the number of results to display. Insertion time is proportional to the total length of all book titles.
-*/
+Assumptions:
+N = Total Number of books/words in the database
+L = Length of the query string (the prefix)
+M = Total length of all N words combined (Used for insertion cost)
+Z = Total number of matching suggestions retrieved from the Trie
+Data Structure: Trie (Prefix Tree).
 
-function calculateTrieSearchEfficiency(L, Z) {
-    let complexity = L + Z;
-    console.log("Trie Search time complexity for L=" + L + ", Z=" + Z + ":", complexity.toFixed(2), "units (Proportional to search length)");
-    return complexity;
-}
+Step 1: Trie Construction (Preprocessing)
+- Purpose: Insert all N book titles into the Trie.
+- Operation: Traversing and creating nodes for every character of every word.
+- Cost: Proportional to the sum of the lengths of all words (M).
+- Total Cost: O(M)
+
+Step 2: Searching for a Prefix
+- Purpose: Find the node corresponding to the end of the query prefix (L).
+- Operation: Traverse the Trie starting from the root, moving down L levels (one level per character).
+- Cost per traversal: O(L)
+
+Step 3: Retrieving Suggestions
+- Purpose: Collect all matching words (Z words) that exist in the subtree rooted at the prefix node found in Step 2.
+- Operation: This involves a traversal (like DFS) from the prefix node to all its leaf nodes.
+- Cost per retrieval: Proportional to the total number of characters in all Z suggested words. Let's simplify this retrieval time to be proportional to Z (the number of suggestions).
+- Total Cost for retrieval: O(Z)
+
+Overall Time Complexity for a Search Operation:
+The search operation consists of the prefix traversal and the suggestion retrieval.
+
+Total Search Time Complexity = (Step 2) + (Step 3)
+Total Search Time Complexity = O(L) + O(Z) 
+
+Final Time Complexity (Search): O(L + Z)
 `,
         complexity: 'O(L + Z)'
     },
+    
     {
         id: 'c11',
         title: 'Market Shop Rent Analysis (Monthly Changes)',
@@ -356,20 +463,128 @@ function calculateTrieSearchEfficiency(L, Z) {
             'For a range query $[i, j]$ (total rent change), the query is broken down into prefix sums: $PrefixSum[j] - PrefixSum[i-1]$. Prefix sums are computed by cleverly aggregating pre-computed segment sums, also in $O(\log n)$ time.'
         ],
         complexityCode: `
-/*
-Efficiency Calculation: O(log N) for both Update and Query
-N = Number of shops/segments.
+Time Complexity Derivation (Fenwick Tree / Binary Indexed Tree):
 
-Fenwick Tree is highly efficient for this specific combination of dynamic updates and aggregate queries. The logarithmic complexity arises from its structure based on the binary representation of indices.
-*/
+Assumptions:
+N = Number of elements in the base array (Shops/Segments)
+The Fenwick Tree is a data structure optimized for prefix sum calculations.
 
-function calculateFenwickTreeEfficiency(N) {
-    let logN = Math.log2(N);
-    console.log("Fenwick Tree Query/Update time complexity for N=" + N + ": O(log N) =", logN.toFixed(2), "units");
-    return logN;
-}
+Step 1: Tree Construction (Preprocessing)
+- Purpose: Initialize the Fenwick Tree with the initial rent values.
+- Operation: This can be done by iteratively calling the single-element Update operation N times.
+- Cost per Update: O(log N)
+- Total Cost: N * O(log N) = O(N log N)
+- *Note: Construction can also be done in O(N) using a specialized bottom-up approach, but the iterative update method is more common.*
+
+Step 2: Single-Element Update (Rent Change)
+- Purpose: Change the rent for a single shop and update the Fenwick Tree's prefix sums accordingly.
+- Operation: The update path follows the binary representation of the index, specifically adding the new value to O(log N) nodes in the tree.
+- Cost per update: O(log N)
+- Total Cost: O(log N)
+
+Step 3: Prefix Sum Query (Total Rent up to Shop i)
+- Purpose: Calculate the cumulative rent from the start of the market up to a specific shop index i.
+- Operation: The query path also follows the binary representation of the index, summing the values from O(log N) specific nodes.
+- Cost per query: O(log N)
+
+Step 4: Range Sum Query (Total Rent in a segment [i, j])
+- Purpose: Calculate the total rent for a range of shops from index i to j.
+- Operation: This is calculated by performing two prefix sum queries: Query(j) - Query(i-1).
+- Cost per Range Query: O(log N) + O(log N) = O(log N)
+
+Final Time Complexity:
+The key dynamic operations (Update and Query) are logarithmic.
+
+Final Time Complexity = O(log N) for both Update and Query operations.
 `,
         complexity: 'O(log N)'
+    },
+    // New Case Study 9: Pharmacy Inventory Expiry Manager
+    {
+        id: 'c9',
+        title: 'Pharmacy Inventory Expiry Manager',
+        problem: 'Ensure medicines are sold based on the FIFO (First-In, First-Out) principle applied to expiry date, minimizing waste.',
+        icon: 'fa-pills', 
+        algo: 'Min-Heap + Hash Map',
+        diagram: '',
+        why: 'This combines the <strong>Greedy Technique</strong> with specialized data structures. The <strong>Min-Heap</strong> stores items prioritized by expiry date, guaranteeing $O(\log n)$ access to the soonest-expiring medicine. The <strong>Hash Map</strong> provides $O(1)$ average-case lookup for checking stock quantities and managing different product types.',
+        how: [
+            'Medicines are inserted into a Min-Heap using a pair (expiry\_date, unique\_ID) as the key, ensuring the earliest expiry date is always at the root.',
+            'A Hash Map tracks the total quantity available for each unique medicine ID.',
+            'When a medicine is requested, the Min-Heap root provides the specific batch with the nearest expiry date for sale (Extract Min).',
+            'When new stock arrives, it is inserted into the heap. The Hash Map quantity is updated accordingly.'
+        ],
+        complexityCode: `
+Time Complexity Derivation (Min-Heap + Hash Map):
+
+Assumptions:
+N = Total number of unique batches/expiry dates in inventory (size of the Min-Heap).
+
+Step 1: Selling/Removal (Extract Min)
+- Purpose: Retrieve the batch with the earliest expiry date.
+- Operation: Requires extracting the minimum element from the Min-Heap.
+- Cost per operation: O(log N)
+- Total Cost for Selling: O(log N)
+
+Step 2: Receiving/Insertion (Insert)
+- Purpose: Add a new batch of medicine to the inventory.
+- Operation: Requires inserting a new element into the Min-Heap.
+- Cost per operation: O(log N)
+- Operation: Updating the Hash Map quantity (O(1) amortized).
+- Total Cost for Receiving: O(log N) + O(1) = O(log N)
+
+Overall Time Complexity:
+The complexity of inventory management operations (sell/receive) is dominated by the Heap operations.
+
+Final Time Complexity = O(log N) for core operations.
+`,
+        complexity: 'O(log N)'
+    },
+    // New Case Study 10: Mobile Tower Coverage Gap Finder
+    {
+        id: 'c10',
+        title: 'Mobile Tower Coverage Gap Finder',
+        problem: 'Analyze and dynamically locate areas within the city grid that lack sufficient mobile network coverage.',
+        icon: 'fa-wifi', 
+        algo: 'BFS + Segment Tree (or similar 2D structure)',
+        diagram: '',
+        why: 'This uses <strong>BFS</strong> to model signal propagation, treating tower coverage as a graph search problem to find all reachable (covered) cells ($O(V+E)$). Unvisited cells denote gaps. The secondary use of a <strong>Segment Tree</strong> (or a similar structure like a Quad Tree in 2D) allows for $O(\log N)$ aggregation of coverage strength across large zones.',
+        how: [
+            'The city is modeled as a grid of cells.',
+            'Initiate a BFS simultaneously from all active mobile towers.',
+            'The BFS propagates outward up to the maximum signal range, marking every reached cell as "covered" and recording its signal strength.',
+            'After all BFS runs complete, any unvisited cells represent coverage gaps.',
+            'A Segment Tree structure can be used over the grid to efficiently query the minimum signal strength within a large geographical area.'
+        ],
+        complexityCode: `
+Time Complexity Derivation (BFS + 2D Structure):
+
+Assumptions:
+R = Rows, C = Columns (V = R * C total cells)
+T = Number of Mobile Towers
+The cost is dominated by the initial coverage mapping.
+
+Step 1: Coverage Mapping (Multi-Source BFS)
+- Purpose: Determine all cells covered by signal propagation from the T towers.
+- Operation: A multi-source BFS is performed on the grid. Since each cell (V) and connection (E) is visited/checked at most once during the total propagation process.
+- Cost per BFS: O(V + E) = O(R * C)
+- Total Cost: O(R * C)
+
+Step 2: Gap Query (Finding Unvisited Cells)
+- Purpose: Iterate through the grid/array to identify cells not marked as covered.
+- Operation: Linear scan of all V cells.
+- Total Cost: O(V) = O(R * C)
+
+Step 3 (Secondary): Range Query on Coverage Strength (Using 2D Segment Tree/Quad Tree)
+- Purpose: If required, query the minimum signal strength over a large rectangle area.
+- Cost: O(log R * log C) for a 2D Segment Tree or O(log N) for a Quad Tree on the grid.
+
+Overall Time Complexity:
+The primary task of gap detection is dominated by the graph traversal.
+
+Final Time Complexity = O(R * C) for coverage mapping.
+`,
+        complexity: 'O(R * C)'
     }
 ];
 
@@ -466,6 +681,3 @@ function closeModal(event) {
     }
 }
 </script>
-
-</body>
-</html>
