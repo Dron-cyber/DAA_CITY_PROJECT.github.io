@@ -1,0 +1,21 @@
+BookID,LibraryBranch,BookTitle,Category,Author,Year,Rating
+B001,University Library,Data Structures and Algorithms,Computer Science,Mark Weiss,2019,4.6
+B002,University Library,Database System Concepts,Computer Science,Silberschatz,2020,4.7
+B003,University Library,Digital Logic Design,Electronics,Morris Mano,2017,4.5
+B004,School Zone Library,The Adventures of Tom Sawyer,Fiction,Mark Twain,2003,4.3
+B005,School Zone Library,The Jungle Book,Children,Rudyard Kipling,2001,4.4
+B006,School Zone Library,Introduction to Science Basics,Education,Laura King,2015,4.1
+B007,Market Public Library,History of Indian Culture,History,R.S. Sharma,2010,4.2
+B008,Market Public Library,World Atlas Guide,Geography,David Smith,2018,4.5
+B009,Market Public Library,Quick Cooking for Busy People,Lifestyle,Sonia Rao,2021,4.0
+B010,Residential Zone A Library,The Psychology of Money,Finance,Morgan Housel,2020,4.7
+B011,Residential Zone A Library,Atomic Habits,Self-Help,James Clear,2018,4.8
+B012,Residential Zone B Library,Rich Dad Poor Dad,Finance,Robert Kiyosaki,2017,4.6
+B013,Residential Zone B Library,How to Win Friends and Influence People,Self-Help,Dale Carnegie,2009,4.6
+B014,IT Park Reading Hall,Clean Code,Software Engineering,Robert C. Martin,2008,4.8
+B015,IT Park Reading Hall,You Don't Know JS,JavaScript,Kyle Simpson,2017,4.7
+B016,IT Park Reading Hall,Introduction to Machine Learning,AI,Tom Mitchell,2021,4.5
+B017,Industrial Area Community Library,Mechanical Engineering Basics,Engineering,A.K. Gupta,2016,4.4
+B018,Industrial Area Community Library,Electrical Machines,Engineering,P.S. Bimbhra,2015,4.6
+B019,Temple Area Library,Bhagavad Gita,Religion,Vyasa,1998,4.9
+B020,Temple Area Library,Life Lessons from Ramayana,Philosophy,Arun Sharma,2012,4.6
