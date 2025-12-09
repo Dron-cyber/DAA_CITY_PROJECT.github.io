@@ -6,7 +6,9 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden; 
 }
-
+body::-webkit-scrollbar {
+    display: none;
+}
 h1, h2, h3 {
     text-align: center;
     letter-spacing: 1px;
@@ -217,6 +219,12 @@ section {
     z-index: 3000;
     overflow-y: auto; 
     padding: 20px 0;
+}
+.modal-overlay::-webkit-scrollbar {
+    display: none;
+}
+.modal-content::-webkit-scrollbar {
+    display: none;
 }
 
 .modal-content {
