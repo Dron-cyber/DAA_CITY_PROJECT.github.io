@@ -1,3 +1,15 @@
+/*
+    NOTE:
+    This program uses a sample dataset of 20 shops and their monthly rent changes
+    to demonstrate how a Fenwick Tree (Binary Indexed Tree) efficiently supports
+    point updates and range-sum queries on real-time market data.
+
+    The dataset is manually created only for testing and illustrating the 
+    algorithmic workflow. The system is fully scalable—additional shops, more 
+    market segments, or CSV/DB-based inputs can be integrated without modifying 
+    the core Fenwick Tree logic.
+*/
+
 #include <iostream>
 #include <vector>
 #include <map>
