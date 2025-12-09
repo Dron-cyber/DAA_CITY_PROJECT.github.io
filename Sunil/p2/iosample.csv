@@ -1,12 +1,17 @@
-Problem Title,Problem Statement,Input,Output
-"Emergency Vehicle Rapid Response Routing (Dijkstra)","Determine the fastest route for ambulances or fire trucks in real-time, considering traffic density and roadblocks. Use Dijkstra's Algorithm or A* Search to find the shortest path from source to destination.","5 7
-1 2 10
-1 3 5
-2 3 2
-2 4 1
-3 2 3
-3 4 9
-4 5 4
-Source Node: 1
-Destination Node: 5","Shortest Path: 1 -> 3 -> 2 -> 4 -> 5
-Total Travel Time: 12"
+Field,Value
+Problem Title,Emergency Vehicle Rapid Response Routing (Dijkstra)
+Problem Statement,Determine the fastest route for ambulances or fire trucks in real-time, considering traffic density and roadblocks. Use Dijkstra's Algorithm or A* Search to find the shortest path from source to destination.
+
+Input,Number of nodes and edges: 5 7
+Input,Edge: 1 2 10
+Input,Edge: 1 3 5
+Input,Edge: 2 3 2
+Input,Edge: 2 4 1
+Input,Edge: 3 2 3
+Input,Edge: 3 4 9
+Input,Edge: 4 5 4
+Input,Source Node: 1
+Input,Destination Node: 5
+
+Output,Shortest Path: 1 -> 3 -> 2 -> 4 -> 5
+Output,Total Travel Time: 12
