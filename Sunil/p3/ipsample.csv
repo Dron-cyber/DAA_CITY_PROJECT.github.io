@@ -1,0 +1,12 @@
+Field,Value
+Problem Title,Analyzing Connected Green Zones (BFS/DFS)
+Problem Statement,Identify distinct clusters of interconnected parks and green spaces within the city versus isolated patches to improve urban ecological planning and walkability.
+
+Input,Number of parks and paths: 6 5
+Input,Path: 1 2
+Input,Path: 2 3
+Input,Path: 4 5
+Input,Path: 5 6
+Input,Path: 6 4
+
+Output,Number of distinct green zones: 2
