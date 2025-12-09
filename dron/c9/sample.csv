@@ -1,0 +1,17 @@
+BatchID,MedicineName,ExpiryDate,Quantity,ArrivalDate,StorageLocation
+B001,Paracetamol 500mg,2025-02-10,120,2024-12-20,Shelf A1
+B002,Paracetamol 500mg,2025-04-05,150,2025-01-15,Shelf A1
+B003,Ibuprofen 400mg,2025-01-15,80,2024-12-10,Shelf B2
+B004,Ibuprofen 400mg,2025-03-22,100,2025-01-05,Shelf B2
+B005,Amoxicillin 250mg,2024-12-28,60,2024-11-30,Refrigerator R1
+B006,Amoxicillin 250mg,2025-02-18,90,2025-01-02,Refrigerator R1
+B007,Cetrizine 10mg,2025-03-10,200,2025-01-01,Shelf C3
+B008,Cetrizine 10mg,2025-05-12,180,2025-02-05,Shelf C3
+B009,Azithromycin 500mg,2025-01-30,50,2024-12-18,Shelf D1
+B010,Azithromycin 500mg,2025-04-25,70,2025-01-22,Shelf D1
+B011,ORS Powder,2024-12-20,40,2024-11-20,Shelf E1
+B012,ORS Powder,2025-02-15,65,2025-01-10,Shelf E1
+B013,Vitamin C Tablets,2025-03-08,140,2025-01-12,Shelf F2
+B014,Vitamin C Tablets,2025-06-18,160,2025-03-01,Shelf F2
+B015,Insulin Vial,2024-12-15,30,2024-11-25,Refrigerator R2
+B016,Insulin Vial,2025-01-20,45,2024-12-28,Refrigerator R2
