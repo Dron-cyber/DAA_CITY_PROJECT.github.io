@@ -23,7 +23,7 @@ section {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* NAVBAR & SIDE MENU STYLES (Retained structure) */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -121,7 +121,7 @@ section {
     left: 0;
 }
 
-/* --- CASE STUDY GRID --- */
+
 .case-study-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -129,7 +129,7 @@ section {
     margin-top: 40px;
 }
 
-/* --- CASE STUDY CARD (Stylish/Animated State) --- */
+
 .case-study-card {
     background: #1b1f2a;
     padding: 25px;
@@ -141,7 +141,7 @@ section {
     position: relative; 
 }
 
-/* Hover Animation and Glow */
+
 .case-study-card:hover {
     transform: translateY(-8px) scale(1.02);
     border-color: #3da9fc;
@@ -157,7 +157,7 @@ section {
 }
 
 .card-title i {
-    font-size: 15px;
+    font-size: 24px;
     color: #fca311;
     margin-right: 15px;
 }
@@ -186,7 +186,7 @@ section {
     text-align: center;
 }
 
-/* GitHub Icon Styling - Small Card */
+
 .github-link-card {
     position: absolute;
     top: 15px;
@@ -202,7 +202,7 @@ section {
     transform: scale(1.2) rotate(5deg);
 }
 
-/* --- MODAL (Expanded state) --- */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -271,7 +271,18 @@ section {
     border: 1px solid #3d4a61;
 }
 
-/* GitHub Button in Modal */
+.modal-content code {
+    display: block;
+    white-space: pre-wrap;
+    background: #0d121c;
+    color: #c0c0c0;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #3d4a61;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
 .github-btn-modal {
     display: block;
     width: 100%;
@@ -294,7 +305,45 @@ section {
     transform: translateY(-2px);
 }
 
-/* --- MEDIA QUERIES (Retained structure) --- */
+.explanation-section {
+    margin-top: 35px;
+    padding: 20px;
+    background: #1b1f2a;
+    border-radius: 10px;
+    border-left: 5px solid #fca311;
+    text-align: left;
+}
+
+.explanation-section h3 {
+    text-align: left;
+    color: #fca311;
+    margin-top: 0;
+}
+
+.explanation-section ul {
+    list-style-type: '👉 ';
+    padding-left: 20px;
+}
+
+.explanation-section li {
+    margin-bottom: 8px;
+}
+
+.modal-diagram-space {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    border: 1px dashed #3d4a61;
+    border-radius: 8px;
+    background: #14161e;
+}
+
+.modal-diagram-space p {
+    color: #c0c0c0;
+    font-style: italic;
+}
+
+
 @media (max-width: 900px) {
     .navbar ul { display: none; }
     .hamburger { display: flex; }
