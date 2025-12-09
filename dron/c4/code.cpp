@@ -1,4 +1,14 @@
-//this is based on sample data (crime.csv)
+/*
+    NOTE:
+    This program uses sample crime data (from crime.csv) to demonstrate the
+    clustering algorithm for identifying high-crime hotspots. The dataset is 
+    not real city data—it is provided only for testing, illustration, and 
+    validating the DFS-based hotspot detection logic.
+
+    The system is fully scalable. More rows, columns, or real-world crime 
+    records can be added easily without modifying the algorithm.
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
