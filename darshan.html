@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Scenario Applications – IoT & Safety</title>
+<title>Case Studies – City Design Project</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
 </div>
 
 <nav class="navbar">
-    <h2>Smart Scenario Applications</h2>
+    <h2>Case Studies</h2>
     <div class="hamburger" onclick="openMenu()">
         <span></span>
         <span></span>
@@ -40,23 +40,32 @@
 </nav>
 
 <section id="case-studies">
-    <h1>Advanced Algorithms in IoT and Safety Systems</h1>
+    <h1>Algorithm-Driven Urban Solutions</h1>
     <p style="text-align:center; font-size:18px;">
-        Applying sophisticated data structures and algorithms to solve real-time industrial and home automation challenges.
+        Applying core Design and Analysis of Algorithms (DAA) concepts to solve real-world city design challenges.
     </p>
 
     <div class="case-study-grid" id="caseStudyGrid">
-        </div>
+    </div>
+    
+    <div class="explanation-section">
+        <h3>Core Design, Principles, and Data Structures Used</h3>
+        <p>This project utilizes a range of advanced algorithmic techniques to ensure high efficiency and scalability across all urban solutions.</p>
+        <ul>
+            <li><strong>Design Techniques Used:</strong> We rely heavily on the Greedy Technique (for optimal selections in Kruskal's and Dijkstra's), Divide and Conquer (for tree-based structures like Segment/Fenwick Trees), and the crucial Space and Time Trade-off (using specialized data structures to minimize time complexity at the cost of slightly more memory).</li>
+            <li><strong>Core Principles Applied:</strong> The project extensively uses principles such as Connectivity and Reachability (Graph Traversal), Edge Relaxation (Dijkstra's), Pre-Computing (Segment/Fenwick Trees), the Cut and Cycle Properties (Kruskal's), Bit Manipulations (Fenwick Tree), and Balance Maintenance (Heaps). We also leverage Recursion in tree traversals and Search Space Exploration in graph algorithms.</li>
+            <li><strong>Data Structures Employed:</strong> Solutions rely on Heap/Priority Queue for instant min/max retrieval, Trie for fast string prefix searching, Segment Tree and Fenwick Tree for $O(\log n)$ range queries/updates, and Union-Find (Disjoint Set Union) for cycle detection.</li>
+            <li><strong>SDG Mapping:</strong> This work directly supports SDG 9 (Infrastructure) and SDG 11 (Sustainable Cities).</li>
+        </ul>
+    </div>
 </section>
 
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
     <div class="modal-content" id="modalContent">
-        <span class="close-btn" onclick="closeModal(event)">&times;</span>
-        </div>
+    </div>
 </div>
-
 <script>
-// --- Navigation Logic (Standard) ---
+
 function openMenu() {
     document.getElementById("sideMenu").classList.add("active");
 }
@@ -72,186 +81,389 @@ document.addEventListener('click', function(event) {
 });
 
 
-// --- Case Study Data (New 10 Scenarios) ---
-const smartScenarios = [
-    // 1. Smart Home Fire Escape Route Selector
+
+const caseStudies = [
     {
-        id: 's1',
+        id: 'c12',
         title: 'Smart Home Fire Escape Route Selector',
-        problem: 'During a fire, quickly determine the shortest, safest exit path inside the home.',
+        problem: 'During a fire, efficiently find the shortest, safe exit path inside a home, avoiding all fire-affected areas.',
         icon: 'fa-fire-extinguisher', 
         algo: 'BFS (Breadth-First Search)',
-        repoLink: 'https://github.com/yourusername/smart-safety/fire-escape-bfs', // REPLACE THIS
-        why: 'The home layout is modelled as a grid graph. BFS guarantees finding the shortest path in terms of steps/time, crucial for a life-critical scenario. Fire zones are treated as blocked nodes.',
+        diagram: '',
+        why: 'The problem models the home as an unweighted grid graph, where the distance (number of steps) is the cost. **BFS** is the canonical algorithm for finding the **Shortest Path** in an unweighted graph, ensuring the first route found is the fastest. It uses a **Queue** to explore the path layer by layer, prioritizing the closest cells (Greedy-like selection on distance).',
         how: [
-            'Mark fire cells on the grid as blocked.',
-            'Start <strong>BFS</strong> from the person\'s location.',
-            'Use a <strong>Queue</strong> to manage cell traversal and exploration.',
-            'Find the shortest path to the nearest safe exit door.',
-            'Guide the user using smart lighting or verbal directions.'
+            'Model the home as a grid where rooms/hallways are cells and fire zones are blocked cells.',
+            'Initialize a **Queue** with the person\'s current location and a path tracker.',
+            'Iteratively dequeue a cell and check its unvisited neighbors.',
+            'If a neighbor is safe (not fire) and unvisited, mark it, record the path, and enqueue it.',
+            'Continue until the Exit Door cell is reached, guaranteeing the shortest safe route.',
         ],
-        imageTag: ''
+        complexityCode: `
+Time Complexity Derivation (BFS on Grid):
+
+Assumptions:
+R = Number of Rows (Grid Height)
+C = Number of Columns (Grid Width)
+V = Total Vertices (Cells) = R * C
+E = Total Edges (Connections between cells) = O(R * C)
+
+Step 1: Grid Traversal
+- Purpose: Visit every safe cell (vertex) and check its connections (edges).
+- Operation: BFS visits each vertex and edge at most once.
+- Total Cost: O(V + E)
+
+Since V is proportional to R*C, and E is also proportional to R*C:
+Final Time Complexity = **O(R * C)** (Linear to the size of the home layout)
+`,
+        complexity: 'O(R * C)'
     },
-    // 2. Smart Solar Panel Tilt Optimization
+    // --- 2. Smart Solar Panel Tilt Optimization ---
     {
-        id: 's2',
+        id: 'c13',
         title: 'Smart Solar Panel Tilt Optimization',
-        problem: 'Automatically adjust solar panel angle throughout the day to match sun position and maximize power output.',
+        problem: 'Auto-adjust solar panel angles throughout the day to match the sun\'s position and maximize energy absorption, requiring fast angle lookups based on time.',
         icon: 'fa-sun', 
         algo: 'AVL Tree (Height-Balanced BST)',
-        repoLink: 'https://github.com/yourusername/smart-energy/solar-panel-avl', // REPLACE THIS
-        why: 'AVL Trees allow for continuous, ordered storage of historical sun intensity/angle data. The self-balancing ensures fast $O(\log N)$ query time to retrieve the optimal angle based on current sensor readings.',
+        diagram: '',
+        why: 'The system needs extremely fast lookups and maintenance of a sorted list of optimal angles vs. time. An **AVL Tree** is a self-balancing Binary Search Tree, ensuring that insertion/update (**rebalancing**) and query operations remain strictly **O(log N)** in the worst case. This adherence to balance is crucial for a real-time system that must avoid performance degradation.',
         how: [
-            'Sensors update sun intensity data into the <strong>AVL Tree</strong>.',
-            'The tree performs self-balancing operations (rotations) to maintain $O(\log N)$ search time.',
-            'The system <strong>queries</strong> the best optimal tilt value based on time/intensity.',
-            'Adjust motor tilt angle accordingly, repeating the process periodically.'
+            'Store pre-calculated or sensor-derived optimal angles, indexed by time-of-day, in the AVL Tree.',
+            'On sensor update (new optimal data), insert the (time, angle) pair into the tree.',
+            'If the tree becomes unbalanced (e.g., insertion causes height difference > 1), perform **AVL Rotations** (single or double) to restore the height-balance property.',
+            'Query the tree for the current time slot to retrieve the optimal angle and adjust the motor tilt.',
         ],
-        imageTag: ''
+        complexityCode: `
+Time Complexity Derivation (AVL Tree):
+
+Assumptions:
+N = Total Number of time/angle data points (Nodes in the tree)
+H = Height of the AVL Tree = O(log N)
+
+Step 1: Insertion/Update
+- Purpose: Add a new optimal angle or update an existing one.
+- Operation: Traversing the tree (O(log N)) and performing at most one or two rotations (O(1)).
+- Total Cost: O(log N)
+
+Step 2: Query/Search
+- Purpose: Find the optimal angle for a specific time.
+- Operation: Traversing the height of the balanced tree.
+- Total Cost: O(log N)
+
+Final Time Complexity = **O(log N)** for core operations.
+`,
+        complexity: 'O(log N)'
     },
-    // 3. Industrial Gas Leak Alert System
+    // --- 3. Industrial Gas Leak Alert System ---
     {
-        id: 's3',
+        id: 'c14',
         title: 'Industrial Gas Leak Alert System',
-        problem: 'Detect hazardous gas regions early in a facility and calculate the safest nearest exit path for evacuation.',
-        icon: 'fa-exclamation-triangle', 
+        problem: 'Detect hazardous gas regions early and alert nearest safe exit path using fast spatial detection and an orderly alert hierarchy.',
+        icon: 'fa-industry', 
         algo: 'DFS/BFS + Binary Tree',
-        repoLink: 'https://github.com/yourusername/smart-safety/gas-leak-dfs', // REPLACE THIS
-        why: 'BFS/DFS simulates the spatial spread of the gas contamination. A Binary Tree (or similar hierarchical structure) is used to manage and propagate alerts quickly based on the facility\'s organizational or geographic zones.',
+        diagram: '',
+        why: 'The system has two parts: spatial detection and alert propagation. **BFS/DFS** is used to model the gas spread on the factory floor (a grid/graph), efficiently finding all affected zones (**Connectivity**). A **Binary Tree** is used for the alert system, allowing for a fast, orderly, and hierarchical propagation of the evacuation signal across the facility\'s zones.',
         how: [
-            'Sensor readings indicate leak origin.',
-            '<strong>BFS/DFS</strong> simulates contamination spread in the facility map (grid).',
-            'Affected areas trigger an alert that propagates through the <strong>Binary Tree</strong> hierarchy (e.g., floor manager to safety officer).',
-            'A separate queue-based calculation determines the safest evacuation route to the nearest clear exit.'
+            'Model the facility as a grid graph and initiate **BFS** from the leak source to simulate gas spread, marking contaminated cells.',
+            'Simultaneously, use a search algorithm (like BFS or DFS with a **Queue/Stack**) to find the shortest safe exit route.',
+            'The system traverses a pre-defined **Binary Tree** of alert relays (e.g., Zone 1 -> Zone 1A, Zone 1B) to propagate the evacuation signal.',
+            'Trigger the alarm and guide personnel along the shortest safe route calculated by BFS/DFS.',
         ],
-        imageTag: ''
+        complexityCode: `
+Time Complexity Derivation (BFS/DFS + Binary Tree):
+
+Assumptions:
+V = Number of Vertices (Grid Cells/Areas)
+E = Number of Edges (Connections)
+A = Number of Alert Zones (Nodes in the Binary Tree)
+
+Step 1: Spread Simulation (BFS/DFS)
+- Purpose: Map the contamination zone (V + E).
+- Total Cost: O(V + E)
+
+Step 2: Alert Propagation (Binary Tree Traversal)
+- Purpose: Traverse the Binary Tree to trigger alarms (height H = log A).
+- Total Cost: O(log A) (to reach a specific zone) or O(A) (to alert all zones).
+
+Total Time Complexity for the worst case (full factory contamination and full alert):
+Total Time Complexity = O(V + E) + O(A)
+
+Final Time Complexity = **O(V + E)** (Graph traversal dominates).
+`,
+        complexity: 'O(V + E)'
     },
-    // 4. Smart Irrigation Field Optimizer
+    // --- 4. Smart Irrigation Field Optimizer ---
     {
-        id: 's4',
+        id: 'c15',
         title: 'Smart Irrigation Field Optimizer',
-        problem: 'Irrigate farmland efficiently, ensuring full coverage without dry or unwatered areas by optimizing water reach and valve activation.',
-        icon: 'fa-water', 
-        algo: 'BFS + Union-Find + Lookup Table',
-        repoLink: 'https://github.com/yourusername/smart-agri/irrigation-union-find', // REPLACE THIS
-        why: 'BFS models water flow from the source. **Union-Find** is highly efficient at dynamically merging small, fully irrigated segments into large components, reducing redundant checks. Lookup Table stores crucial moisture thresholds for fast comparison.',
+        problem: 'Irrigation must cover full farmland efficiently, optimizing water reach and valve activation without dry areas.',
+        icon: 'fa-leaf', 
+        algo: 'BFS + Union-Find',
+        diagram: '',
+        why: 'The **BFS** component finds the nearest water source coverage, treating the field as an unweighted graph. The **Union-Find (Disjoint Set Union)** structure is critical for efficiently tracking and merging fully irrigated zones (**Connectivity**) in near constant time $O(\\alpha(N))$, preventing redundant water flow.',
         how: [
-            'Grid moisture reading is taken.',
-            '<strong>BFS</strong> expands water flow from active valves to cover the nearest areas.',
-            '<strong>Union-Find</strong> merges connected irrigated components into sets.',
-            'Lookup Table stores moisture thresholds for fast $O(1)$ comparison.',
-            'If any cell remains below the threshold, the relevant valve is reopened.'
+            'Model the field as a grid based on soil moisture readings.',
+            'Initiate **BFS** from activated water sources to simulate water flow and mark connected cells as "irrigated".',
+            'Use **Union-Find** to merge adjacent irrigated cells into a single, fully-covered set (component).',
+            'Check the grid: If any cell is below the moisture threshold and is not part of a fully irrigated component, a valve needs adjustment.',
+            'Reopen/adjust the valve for the unwatered component based on the lookup table for moisture thresholds.',
         ],
-        imageTag: ''
+        complexityCode: `
+Time Complexity Derivation (BFS + Union-Find):
+
+Assumptions:
+V = Total Vertices (Grid Cells)
+E = Total Edges (Connections)
+N = Number of elements in Union-Find (N = V)
+
+Step 1: BFS Coverage Mapping
+- Purpose: Simulate water spread.
+- Total Cost: O(V + E)
+
+Step 2: Union-Find Operations
+- Purpose: Perform N Union operations and multiple Find operations.
+- Cost per operation (amortized): O($\\alpha(N)$) (nearly constant).
+- Total Cost: O(N $\\cdot \\alpha(N)$) $\\approx$ O(N)
+
+Since V + E dominates the Union-Find operation cost:
+Final Time Complexity = **O(V + E)**
+`,
+        complexity: 'O(V + E)'
     },
-    // 5. Hospital Bed Allocation System
+    // --- 5. Hospital Bed Allocation System ---
     {
-        id: 's5',
+        id: 'c16',
         title: 'Hospital Bed Allocation System',
-        problem: 'Continuously assign patients to beds, preventing overlap while ensuring priority (ICU/Emergency) patients get the first available and best-suited bed.',
-        icon: 'fa-hospital-alt', 
-        algo: 'Min-Heap + Priority Queue',
-        repoLink: 'https://github.com/yourusername/healthcare-sys/bed-allocation-heap', // REPLACE THIS
-        why: 'A **Min-Heap** tracks the earliest time beds become free. A separate **Priority Queue** manages the queue of incoming patients, always prioritizing the highest-urgency case first, ensuring fairness and life-critical response.',
-        how: [
-            'Patient entry streams into the system, assigned a priority score.',
-            'Patients are added to a **Priority Queue** based on urgency.',
-            'A <strong>Min-Heap</strong> tracks the next free time for all beds.',
-            'Highest priority patient from the queue is assigned to the earliest free and appropriate bed from the heap.'
-        ],
-        imageTag: ''
-    },
-    // 6. Smart Runway Collision Avoidance System
-    {
-        id: 's6',
-        title: 'Smart Runway Collision Avoidance System',
-        problem: 'Continuously detect intersecting paths of aircraft taxiing on runways and taxiways to prevent collisions.',
-        icon: 'fa-fighter-jet', 
-        algo: 'DFS (Depth-First Search)',
-        repoLink: 'https://github.com/yourusername/aerospace-sys/collision-dfs', // REPLACE THIS
-        why: 'Runways and taxi paths are modeled as a graph. DFS is highly effective for rapidly exploring reachable runway zones from a given point and detecting intersection points where two aircraft paths might meet simultaneously.',
-        how: [
-            'Represent the taxi path/runway network as a graph of nodes (intersections) and edges (tracks).',
-            '<strong>DFS</strong> checks whether the current aircraft\'s intended path intersects with the active path of any other aircraft.',
-            'If an intersection is shared and the timing is critical (conflict detected), Air Traffic Control (ATC) is immediately alerted to halt movement.'
-        ],
-        imageTag: ''
-    },
-    // 7. Smart Water Leakage Detection Network
-    {
-        id: 's7',
-        title: 'Smart Water Leakage Detection Network',
-        problem: 'Detect and pinpoint hidden pipeline leaks early by monitoring pressure anomalies, reducing water loss and maintenance costs.',
-        icon: 'fa-pipeline', 
-        algo: 'Hashing + BFS + Segment Tree',
-        repoLink: 'https://github.com/yourusername/utility-mgmt/leak-detection-seg-tree', // REPLACE THIS
-        why: 'Pipelines form a graph structure, making BFS ideal for tracing leaks. Segment Tree is used to monitor sensor streams to detect pressure anomalies instantly. Hashing provides fast $O(1)$ lookup for the vast number of sensor devices.',
-        how: [
-            'Readings are stored in a <strong>Hash Table</strong> for $O(1)$ access.',
-            'A <strong>Segment Tree</strong> monitors time-windowed pressure readings for sharp drops (anomaly detection).',
-            'If an anomaly is flagged, <strong>BFS</strong> runs from the suspicious node to trace the probable leak branch quickly.',
-            'An alert is raised with the sector location and severity score.'
-        ],
-        imageTag: ''
-    },
-    // 8. City Landmark Distance Matrix Calculation
-    {
-        id: 's8',
-        title: 'City Landmark Distance Matrix Calculation',
-        problem: 'Pre-calculate the shortest travel time/distance between every pair of major city landmarks/hubs for rapid planning and mapping services.',
-        icon: 'fa-city', 
-        algo: 'Floyd-Warshall Algorithm',
-        repoLink: 'https://github.com/yourusername/city-planning/distance-matrix-fw', // REPLACE THIS
-        why: 'Floyd-Warshall is the definitive algorithm for the All-Pairs Shortest Path problem. Since the network of landmarks is relatively static and dense, running Floyd-Warshall once is superior to running Dijkstra\'s $|V|$ times, providing a complete distance matrix for immediate lookup.',
-        how: [
-            'Represent landmarks as nodes and road links as weighted edges.',
-            'Use a three-loop iterative approach to check all intermediate nodes $(k)$ between every pair of nodes $(i, j)$.',
-            'The distance matrix $D[i][j]$ is updated with $\\min(D[i][j], D[i][k] + D[k][j])$.',
-            'The final matrix provides the minimum cost (time/distance) between all pairs of landmarks.'
-        ],
-        imageTag: ''
-    },
-    // 9. Maintenance Vehicle Allocation System
-    {
-        id: 's9',
-        title: 'Maintenance Vehicle Allocation System',
-        problem: 'Optimally assign maintenance vehicles or utility crews to a continuous stream of tasks based on proximity and urgency to minimize response time and cost.',
-        icon: 'fa-truck-pickup', 
+        problem: 'Assign beds to continuously arriving patients, prioritizing critical patients first and ensuring the earliest available bed is always used.',
+        icon: 'fa-bed', 
         algo: 'Min-Heap (Priority Queue)',
-        repoLink: 'https://github.com/yourusername/utility-mgmt/allocation-min-heap', // REPLACE THIS
-        why: 'A Min-Heap efficiently implements a Priority Queue, ensuring the most urgent task (minimum response time/highest criticality score) is always available for assignment in $O(1)$ time and removed in $O(\log n)$ time. This is ideal for fast, dynamic, online allocation.',
+        diagram: '',
+        why: 'This uses a multi-layered **Greedy** assignment. A **Priority Queue (Max-Heap)** handles patient urgency (critical patients first). A **Min-Heap** stores bed-free times, ensuring the **earliest available** bed is assigned, which minimizes waiting time. Both core operations are $\mathbf{O(\log N)}$ for efficiency.',
         how: [
-            'Tasks are assigned a priority score based on urgency and required time.',
-            'The tasks are inserted into a <strong>Min-Heap</strong>, ordered by this score.',
-            'Crews extract the highest-priority task (minimum score) from the top of the heap.',
-            'The heap automatically re-establishes the priority order after extraction.'
+            'Stream patient entry into a Max-Heap (Priority Queue) based on urgency score (add priority to queue).',
+            'Maintain available beds (or their next expected free time) in a separate **Min-Heap**.',
+            'Extract the highest priority patient (Max-Heap) and the earliest available bed (Min-Heap).',
+            'Assign the best matching bed (e.g., ICU for ICU patient) and insert its new expected free time back into the Min-Heap.',
+            'Reassign patients if urgency changes, potentially requiring a heap decrease-key operation.'
         ],
-        imageTag: ''
+        complexityCode: `
+Time Complexity Derivation (Min-Heap / Priority Queue):
+
+Assumptions:
+P = Max number of waiting Patients (Max-Heap size)
+B = Total number of Beds (Min-Heap size)
+N = max(P, B)
+
+Step 1: Patient Insertion/Prioritization
+- Cost per insertion: O(log P)
+
+Step 2: Assignment Cycle (Extract and Re-insert)
+- Extract highest priority patient: O(log P)
+- Extract earliest available bed: O(log B)
+- Re-insert bed with new free time: O(log B)
+
+Since the complexity is dominated by the logarithmic time of heap operations:
+Final Time Complexity = **O(log N)** for each patient transaction.
+`,
+        complexity: 'O(log N)'
     },
-    // 10. Real-Time Water Theft Detector
+    // --- 6. Smart Runway Collision Avoidance System ---
     {
-        id: 's10',
+        id: 'c17',
+        title: 'Smart Runway Collision Avoidance System',
+        problem: 'Model airport taxiways as a graph and continuously detect conflicts when multiple aircraft are on intersecting paths.',
+        icon: 'fa-plane', 
+        algo: 'DFS (Depth-First Search)',
+        diagram: '',
+        why: 'The taxiway system is a graph where the goal is to check for common reachable nodes (intersections). **DFS** is excellent for **Reachability** and **Connectivity** analysis, systematically exploring every potential path from an aircraft\'s position to detect if the path intersects an active route of another aircraft. This depth-first approach is efficient for path checking in the airport graph.',
+        how: [
+            'Represent the airport taxi-paths as a graph (nodes are intersections, edges are tracks).',
+            'For a new or moving aircraft, initiate **DFS** from its current position to map out all reachable runway zones and planned paths.',
+            'Continuously compare the set of nodes reachable by the current aircraft against the active paths of all other aircraft.',
+            'If a common intersection is found to be reached by two aircraft simultaneously (conflict detected), the ATC is alerted and movement is halted.',
+        ],
+        complexityCode: `
+Time Complexity Derivation (DFS on Graph):
+
+Assumptions:
+V = Number of Vertices (Junctions/Nodes) in the runway graph
+E = Number of Edges (Tracks/Paths) in the runway graph
+A = Number of active Aircraft.
+
+Step 1: Path Detection
+- Purpose: Run DFS for an aircraft to find its reachable path.
+- Operation: DFS visits every vertex and edge at most once.
+- Cost per DFS run: O(V + E)
+
+Step 2: Conflict Monitoring
+- Purpose: If the system runs DFS for all A active aircraft in parallel.
+- Total Cost: A * O(V + E)
+
+Final Time Complexity for a single path check: **O(V + E)** (Linear to the size of the airport map).
+`,
+        complexity: 'O(V + E)'
+    },
+    // --- 7. Smart Water Leakage Detection Network ---
+    {
+        id: 'c18',
+        title: 'Smart Water Leakage Detection Network',
+        problem: 'Detect pipeline leaks early by monitoring flow/pressure anomalies and instantly pinpointing the leak location to alert maintenance teams.',
+        icon: 'fa-water', 
+        algo: 'Hashing + BFS + Segment Tree',
+        diagram: '',
+        why: 'The solution combines three specialized structures: **Hashing** provides $O(1)$ lookup for fast sensor ID management. A **Segment Tree** efficiently monitors live sensor streams to detect pressure drops (anomalies) in $O(\log N)$ time. Finally, **BFS** uses graph traversal to quickly locate the affected pipe branch and trace the probable leak location (**Connectivity**).',
+        how: [
+            'Divide the pipeline into sectors, connecting pressure sensors to nodes.',
+            'Store live readings in a **Hash Table** indexed by sensor ID for O(1) updates.',
+            'Build a **Segment Tree** over time-windowed readings to allow fast $O(\log N)$ range-sum or min/max queries to detect sharp pressure drops instantly.',
+            'If an anomaly is detected, run **BFS** from the suspicious node (where pressure dropped) to trace the flow and identify the probable leak branch.',
+            'Raise an alert to the maintenance dashboard with the location and severity score.',
+        ],
+        complexityCode: `
+Time Complexity Derivation (Segment Tree + BFS):
+
+Assumptions:
+N = Number of sensor readings/data points (Segment Tree size)
+V = Number of vertices (Pipe junctions) in the pipeline graph
+E = Number of edges (Pipes) in the pipeline graph
+
+Step 1: Anomaly Detection (Segment Tree/Hashing)
+- Purpose: Update a sensor reading and check for anomalies.
+- Operation: Hash lookup O(1) + Segment Tree Update/Query O(log N).
+- Total Cost for Real-Time Monitoring: O(log N)
+
+Step 2: Leak Tracing (BFS)
+- Purpose: Trace the affected branch when an anomaly is found.
+- Total Cost for Tracing: O(V + E)
+
+Since the system continuously monitors (O(log N)) and only occasionally traces a leak (O(V+E)), the monitoring complexity is often key.
+Final Time Complexity = **O(log N)** (for monitoring) and **O(V + E)** (for tracing).
+`,
+        complexity: 'O(log N) / O(V + E)'
+    },
+    // --- 8. City Landmark Distance Matrix Calculation ---
+    {
+        id: 'c19',
+        title: 'City Landmark Distance Matrix Calculation',
+        problem: 'Pre-calculate the shortest travel cost (distance/time) between every pair of major city landmarks or hubs for immediate lookup in mapping services.',
+        icon: 'fa-map-signs', 
+        algo: 'Floyd-Warshall Algorithm',
+        diagram: '[Image illustrating the three nested loops of Floyd-Warshall updating a distance matrix]',
+        why: 'The **Floyd-Warshall Algorithm** is an application of **Dynamic Programming** and is perfectly suited for the **All-Pairs Shortest Path** problem. For a relatively static and dense graph (where landmarks connect to many others), its $O(V^3)$ complexity is superior to running Dijkstra\'s algorithm $V$ times (which would be $O(V(E + V \log V))$ or $O(V^2 \log V)$ for a dense graph). It provides a complete, pre-calculated distance matrix for $O(1)$ lookups.',
+        how: [
+            'Initialize a distance matrix $D$ where $D[i][j]$ is the cost of the direct road from landmark $i$ to $j$ (or $\\infty$ if no direct path exists).',
+            'Iterate through every landmark $k$ as an intermediate node (the **k** loop).',
+            'For every pair of landmarks $(i, j)$, update the distance using the recurrence relation: $D[i][j] = \min(D[i][j], D[i][k] + D[k][j])$.',
+            'After the loops complete, $D[i][j]$ contains the shortest path between all pairs $(i, j)$.'
+        ],
+        complexityCode: `
+Time Complexity Derivation (Floyd-Warshall Algorithm):
+
+Assumptions:
+V = Number of Vertices (Landmarks/Nodes)
+The algorithm relies on three perfectly nested loops.
+
+Step 1: Intermediate Node Loop (k)
+- Purpose: Consider every node k as a potential intermediate step on the shortest path.
+- Cost: V iterations.
+
+Step 2: Source Node Loop (i)
+- Purpose: Iterate through every starting node i.
+- Cost: V iterations.
+
+Step 3: Destination Node Loop (j)
+- Purpose: Iterate through every destination node j.
+- Cost: V iterations.
+
+The calculation inside the innermost loop is O(1).
+Total Time Complexity = V * V * V = O(V^3)
+`,
+        complexity: 'O(V³)'
+    },
+    // --- 9. Maintenance Vehicle Assignment ---
+    {
+        id: 'c20',
+        title: 'Maintenance Vehicle Assignment',
+        problem: 'Optimally assign maintenance vehicles or utility crews to a streaming list of tasks based on proximity and urgency to minimize response time.',
+        icon: 'fa-truck-moving', 
+        algo: 'Min-Heap (Priority Queue)',
+        diagram: '',
+        why: 'A **Min-Heap** provides an efficient implementation of a **Priority Queue**, which is the ideal **Greedy** structure here. It ensures the most urgent task (the one with the minimum response time or highest criticality score, represented by the minimum value) is always available for assignment in $O(1)$ time for inspection and $O(\log N)$ time for removal/insertion. This is critical for fast, dynamic, online allocation as new requests arrive.',
+        how: [
+            'New tasks are inserted into the Min-Heap using a calculated priority score (e.g., response time, urgency, proximity) as the key.',
+            'The central dispatcher repeatedly extracts the task with the minimum key (highest urgency/lowest response time) from the Min-Heap.',
+            'The extracted task is assigned to the nearest available vehicle.',
+            'If a task\'s urgency changes, its key is updated within the heap (a Decrease Key operation, often $O(\log N)$).',
+        ],
+        complexityCode: `
+Time Complexity Derivation (Min-Heap / Priority Queue):
+
+Assumptions:
+N = Total number of pending tasks (size of the Min-Heap)
+
+Step 1: Task Insertion (New Request)
+- Purpose: Add a new task into the pool.
+- Cost per insertion: O(log N)
+
+Step 2: Task Assignment (Extract Min)
+- Purpose: Assign the highest priority task.
+- Operation: Extracting the minimum element from the Min-Heap.
+- Cost per operation: O(log N)
+
+Step 3: Urgency Update (Decrease Key)
+- Purpose: If a task's priority increases, adjust its position.
+- Cost per operation: O(log N)
+
+Final Time Complexity = **O(log N)** for all critical dynamic operations.
+`,
+        complexity: 'O(log N)'
+    },
+    // --- 10. Real-Time Water Theft Detector ---
+    {
+        id: 'c21',
         title: 'Real-Time Water Theft Detector',
-        problem: 'Detect unauthorized water usage instantly and reduce losses by monitoring consumption against legal limits and identifying abnormal withdrawals.',
+        problem: 'Monitor consumption patterns, compare against legal limits, and instantly identify sudden abnormal withdrawals due to illegal tapping or unauthorized connections.',
         icon: 'fa-tint', 
         algo: 'Trie + AVL Tree + Fenwick Tree',
-        repoLink: 'https://github.com/yourusername/utility-mgmt/theft-detection-trie', // REPLACE THIS
-        why: 'The combination ensures speed: **Trie** for instant consumer validation, **AVL Tree** for balanced access to usage history, and **Fenwick Tree** for rapid range-sum anomaly detection in sectional consumption data.',
+        diagram: '[Image illustrating data flow through Trie for ID, AVL for logs, and Fenwick for anomaly detection]',
+        why: 'This system utilizes three advanced structures: **Trie** allows fast $O(L)$ lookup for validating registered consumer IDs. **AVL Tree** keeps consumption log updates balanced and searchable in $O(\log N)$ time. **Fenwick Tree** enables constant-time prefix-sum checks and $O(\log N)$ updates, making it ideal for live anomaly detection against expected range sums of water draw.',
         how: [
-            'Registered consumer IDs stored in a <strong>Trie</strong> for fast validation.',
-            'Consumption logs stored in an <strong>AVL Tree</strong> per consumer for balanced historical access.',
-            'A <strong>Fenwick Tree</strong> per sector detects suspicious spikes in overall water draw using fast prefix-sum checks.',
-            'Anomalies (no Trie match or spike exceeds threshold) trigger an alert.'
+            'Store registered consumer meter IDs in a **Trie** for real-time validation upon reading arrival.',
+            'Stream consumption readings into an **AVL Tree** for each consumer, maintaining a sorted and balanced usage history.',
+            'Maintain a **Fenwick Tree** per sector to detect suspicious spikes in overall water draw by checking range sums.',
+            'If a meter reading arrives with no Trie match or a spike detected by the Fenwick Tree exceeds the threshold, flag water theft.',
+            'Notify authorities with location and time-stamp for action.',
         ],
-        imageTag: ''
+        complexityCode: `
+Time Complexity Derivation (Trie + AVL + Fenwick):
+
+Assumptions:
+N = Total number of consumers (size of AVL/Fenwick base array)
+L = Max length of a meter ID (Trie depth)
+
+Step 1: ID Validation (Trie Search)
+- Purpose: Check if a meter ID is registered.
+- Total Cost: O(L)
+
+Step 2: Usage Log Update (AVL Update)
+- Purpose: Insert a new reading into the consumer's history log.
+- Total Cost: O(log N)
+
+Step 3: Anomaly Detection (Fenwick Query/Update)
+- Purpose: Update the sector's total draw and check against thresholds.
+- Total Cost: O(log N)
+
+Final Time Complexity = **O(L + log N)** for each reading transaction.
+`,
+        complexity: 'O(L + log N)'
     }
 ];
 
-// --- Card Generation and Modal Logic (Standard) ---
+// --- Card Generation and Modal Logic ---
 const grid = document.getElementById('caseStudyGrid');
 const modalOverlay = document.getElementById('modalOverlay');
 const modalContent = document.getElementById('modalContent');
 
+// 1. Function to create the initial card HTML 
 function createCard(study) {
     const card = document.createElement('div');
     card.className = 'case-study-card';
@@ -264,36 +476,40 @@ function createCard(study) {
     githubLinkCard.target = '_blank';
     githubLinkCard.innerHTML = '<i class="fab fa-github"></i>';
 
+    
     card.onclick = (e) => {
+        // Prevent modal opening if the GitHub link was clicked
         if (e.target.closest('.github-link-card')) return;
         openModal(study.id);
     };
 
-    // Note: The 'algo' in the card view now lists all algorithms used for clarity
     card.innerHTML = `
         <div class="card-title">
             <i class="fas ${study.icon}"></i>
             <h3>${study.title}</h3>
         </div>
         <p>${study.problem}</p>
-        <div class="algo-used">Algorithm: <strong>${study.algo.split(' + ').join(' / ')}</strong></div>
+        <div class="algo-used">Algorithm: <strong>${study.algo}</strong></div>
     `;
 
     card.appendChild(githubLinkCard);
     return card;
 }
 
-smartScenarios.forEach(study => {
+// 2. Insert all cards into the grid on load
+caseStudies.forEach(study => {
     grid.appendChild(createCard(study));
 });
 
+// 3. Function to open the modal and load content
 function openModal(id) {
-    const study = smartScenarios.find(s => s.id === id);
+    const study = caseStudies.find(s => s.id === id);
     if (!study) return;
 
-    const howList = study.how.map(item => `<li>${item}</li>`).join('');
+    // Remove strong tags from the 'how' list items for cleaner presentation
+    const howList = study.how.map(item => `<li>${item.replace(/<strong[^>]*>|<\/strong>/g, '')}</li>`).join('');
 
-    // The 'Why' section now uses 'Why This Approach' title
+    // Generate the full modal content structure
     modalContent.innerHTML = `
         <span class="close-btn" onclick="closeModal(event)">&times;</span>
         <h2>${study.title}</h2>
@@ -302,15 +518,21 @@ function openModal(id) {
         <h4>Problem Statement</h4>
         <p>${study.problem}</p>
 
-        <h4>Why This Approach?</h4>
+        <h4>Why This Algorithm? (Design Rationale)</h4>
         <p>${study.why}</p>
 
         <h4>How It Works (Algorithm Flow)</h4>
         <ul>${howList}</ul>
         
-        <div class="flowchart-container">
-            ${study.imageTag} 
+        <h4 style="margin-top: 35px;">Algorithm Flow Diagram</h4>
+        <div class="modal-diagram-space">
+            ${study.diagram}
+            <p>Diagram illustrating the operational flow of <strong>${study.algo}</strong>.</p>
         </div>
+
+        <h4>Efficiency Calculation and Complexity (${study.complexity})</h4>
+        <p>The calculation below provides the theoretical time complexity (Big O notation) for the core operation(s) of this algorithm, demonstrating its performance scalability:</p>
+        <code>${study.complexityCode}</code>
         
         <a href="${study.repoLink}" target="_blank" class="github-btn-modal">
             <i class="fab fa-github"></i> View Code on GitHub
@@ -321,6 +543,7 @@ function openModal(id) {
     document.body.style.overflow = 'hidden'; 
 }
 
+// 4. Function to close the modal
 function closeModal(event) {
     if (event.target.classList.contains('close-btn') || event.target.id === 'modalOverlay') {
         modalOverlay.style.display = 'none';
@@ -328,6 +551,3 @@ function closeModal(event) {
     }
 }
 </script>
-
-</body>
-</html>
