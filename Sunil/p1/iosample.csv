@@ -1,5 +1,4 @@
-
-Edge List: Node1, Node2, Cost (weight)
+Metadata,5,7
 Edge,1,2,10
 Edge,1,3,5
 Edge,2,3,8
@@ -7,8 +6,7 @@ Edge,2,4,12
 Edge,3,4,7
 Edge,3,5,15
 Edge,4,5,9
-
-
+Result_Total_Cost,29
 Result_Edge,1,3,5
 Result_Edge,3,4,7
 Result_Edge,2,3,8
