@@ -1,0 +1,31 @@
+slot_id,place_name,distance_from_gate,occupied,vehicle_id
+1,Market,12,0,
+2,Market,18,1,KA25MJ4432
+3,Market,22,0,
+4,Residential Zone A,10,1,KA28FJ1123
+5,Residential Zone A,15,0,
+6,Residential Zone A,20,0,
+7,Residential Zone B,8,1,KA25AC9921
+8,Residential Zone B,14,0,
+9,Residential Zone B,19,0,
+10,IT Park,5,1,KA25P4451
+11,IT Park,9,1,KA19AB7722
+12,IT Park,15,0,
+13,Industrial Area,7,1,KA25TR5543
+14,Industrial Area,13,0,
+15,Industrial Area,20,0,
+16,School,6,1,KA25M8891
+17,School,11,0,
+18,College,9,1,KA28ZQ3491
+19,College,16,0,
+20,University,7,1,KA25BC9933
+21,University,13,1,KA19QW1192
+22,University,19,0,
+23,Airport,4,1,KA01HZ9911
+24,Airport,10,1,KA28AA4478
+25,Airport,16,0,
+26,Bus Stand,6,1,KA25LM1122
+27,Bus Stand,12,0,
+28,Temple Area,8,0,
+29,Lake/Park Area,10,1,KA25JK7711
+30,Lake/Park Area,15,0,
