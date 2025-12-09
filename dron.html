@@ -182,7 +182,7 @@ Final Time Complexity = **O(N log N)** `,
         how: [
             'The land plots are modeled as an array, over which the Segment Tree is built hierarchically.',
             'Each node stores an aggregated value (e.g., total occupied land) for its specific range of plots.',
-            'Updates (allocating/releasing a plot) traverse one path from the leaf to the root, taking $O(\log n)$ time.',
+            'Updates (allocating/releasing a plot) traverse one path from the leaf to the root, taking O(\log n) time.',
             'Queries efficiently combine the aggregated data from relevant nodes to cover the requested range, also taking $O(\log n)$ time.'
         ],
         complexityCode: `
