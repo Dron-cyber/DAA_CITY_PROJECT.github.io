@@ -1,3 +1,15 @@
+/*
+    NOTE:
+    The parking dataset used in this program is a sample dataset created 
+    specifically for demonstrating the Min-Heap (for nearest free slot) 
+    and Hash Map (for O(1) occupancy lookup) working together in a 
+    real-time parking management system.
+
+    The system is fully scalable — more slots, additional attributes 
+    (such as place names, vehicle types, timestamps), or real parking 
+    layouts can be added without modifying the core heap and hashing logic.
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
