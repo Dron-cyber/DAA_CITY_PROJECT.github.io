@@ -1,0 +1,12 @@
+Field,Value
+Problem Title,Garbage Truck Route Optimization (TSP Heuristics)
+Problem Statement,Calculate the most efficient circular route for sanitation trucks to visit thousands of bins daily, minimizing fuel consumption and operational time.
+
+Input,Number of bins: 4
+Input,Distance from bin 0: 0 10 15 20
+Input,Distance from bin 1: 10 0 35 25
+Input,Distance from bin 2: 15 35 0 30
+Input,Distance from bin 3: 20 25 30 0
+
+Output,Optimized route (approximate): 0 -> 1 -> 3 -> 2 -> 0
+Output,Total distance: 80
