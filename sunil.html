@@ -137,10 +137,10 @@
             'The result is a lean tree structure connecting all infrastructure points at minimal cost.'
         ],
         complexityCode: `
-1. **Sorting Edges:** In Kruskal's algorithm, the first step is to sort all edges by weight, which takes O(E log E).
-2. **Union-Find:** We iterate through edges and perform Union-Find operations to check for cycles. With path compression, this takes O(E α(V)), which is nearly linear.
-3. **Dominance:** Since E can be at most V², log E is proportional to log V. The sorting step dominates the runtime.
-4. **Final Complexity:** **O(E log V)** (or O(E log E)).
+1. Sorting Edges: In Kruskal's algorithm, the first step is to sort all edges by weight, which takes O(E log E).
+2. Union-Find: We iterate through edges and perform Union-Find operations to check for cycles. With path compression, this takes O(E α(V)), which is nearly linear.
+3. Dominance: Since E can be at most V², log E is proportional to log V. The sorting step dominates the runtime.
+4. Final Complexity: O(E log V) (or O(E log E)).
 `,
         complexity: 'O(E log V)'
     },
@@ -160,10 +160,10 @@
             'Continuously update edge weights and re-run if traffic conditions change significantly during transit.'
         ],
         complexityCode: `
-1. **Priority Queue Extraction:** We extract the minimum distance node from the binary heap V times. Each extraction takes O(log V). Total: O(V log V).
-2. **Edge Relaxation:** We iterate over all neighbors of the extracted node. In total, every edge (E) is checked once. Updating the priority queue for an edge takes O(log V). Total: O(E log V).
-3. **Total Operations:** O(V log V + E log V). Since E ≥ V in connected graphs, the E term dominates.
-4. **Final Complexity:** **O(E log V)**.
+1. Priority Queue Extraction: We extract the minimum distance node from the binary heap V times. Each extraction takes O(log V). Total: O(V log V).
+2. Edge Relaxation: We iterate over all neighbors of the extracted node. In total, every edge (E) is checked once. Updating the priority queue for an edge takes O(log V). Total: O(E log V).
+3. Total Operations: O(V log V + E log V). Since E ≥ V in connected graphs, the E term dominates.
+4. Final Complexity: O(E log V).
 `,
         complexity: 'O(E log V)'
     },
@@ -183,10 +183,10 @@
             'The number of times a new traversal starts equals the number of distinct green zones.'
         ],
         complexityCode: `
-1. **Node Visitation:** The algorithm iterates through every park node exactly once to mark it as visited. This contributes O(V).
-2. **Edge Traversal:** During the traversal (BFS or DFS), every connecting path (edge) is checked exactly once (or twice for undirected graphs) to find neighbors. This contributes O(E).
-3. **Summation:** The total work is simply the sum of visiting all vertices and traversing all edges.
-4. **Final Complexity:** **O(V + E)**.
+1. Node Visitation: The algorithm iterates through every park node exactly once to mark it as visited. This contributes O(V).
+2. Edge Traversal: During the traversal (BFS or DFS), every connecting path (edge) is checked exactly once (or twice for undirected graphs) to find neighbors. This contributes O(E).
+3. Summation: The total work is simply the sum of visiting all vertices and traversing all edges.
+4. Final Complexity: O(V + E).
 `,
         complexity: 'O(V + E)'
     },
@@ -206,11 +206,11 @@
             'Run a <strong>Max-Flow</strong> algorithm to determine the optimal safe distribution pattern across the entire city network.'
         ],
         complexityCode: `
-1. **Algorithm Choice:** Using the Edmonds-Karp implementation of Max-Flow.
-2. **BFS Steps:** It uses Breadth-First Search (O(E)) to find the shortest augmenting path in the residual graph.
-3. **Iteration Bound:** The algorithm performs at most O(V * E) augmentations in the worst case.
-4. **Calculation:** Multiplying the cost per BFS by the number of augmentations: O(E) * O(V * E).
-5. **Final Complexity:** **O(V E²)**.
+1. Algorithm Choice: Using the Edmonds-Karp implementation of Max-Flow.
+2. BFS Steps: It uses Breadth-First Search (O(E)) to find the shortest augmenting path in the residual graph.
+3. Iteration Bound: The algorithm performs at most O(V * E) augmentations in the worst case.
+4. Calculation: Multiplying the cost per BFS by the number of augmentations: O(E) * O(V * E).
+5. Final Complexity: O(V E²).
 `,
         complexity: 'O(V E^2) (Max-Flow)'
     },
@@ -230,10 +230,10 @@
             'Extract the max element to assign resources, then re-heapify to bring the next highest priority to the top.'
         ],
         complexityCode: `
-1. **Tree Structure:** A binary heap is a complete binary tree, meaning its height is always log N (where N is the number of incidents).
-2. **Insertion:** Adding an incident places it at a leaf and "bubbles it up" to the correct position. Worst case traverses the height of the tree: O(log N).
-3. **Extraction:** Removing the highest priority (root) requires swapping with a leaf and "bubbling down" to restore the heap property. Worst case traversal: O(log N).
-4. **Final Complexity:** **O(log N)** per operation.
+1. Tree Structure: A binary heap is a complete binary tree, meaning its height is always log N (where N is the number of incidents).
+2. Insertion: Adding an incident places it at a leaf and "bubbles it up" to the correct position. Worst case traverses the height of the tree: O(log N).
+3. Extraction: Removing the highest priority (root) requires swapping with a leaf and "bubbling down" to restore the heap property. Worst case traversal: O(log N).
+4. Final Complexity: O(log N) per operation.
 `,
         complexity: 'O(log N)'
     },
@@ -253,11 +253,11 @@
             'Return to the depot once all bins are visited. Large areas are often split using <strong>Divide & Conquer</strong> before routing.'
         ],
         complexityCode: `
-1. **Iteration:** We must visit N total bins.
-2. **Selection:** For every bin visited, the algorithm scans all remaining unvisited bins to find the nearest one.
-3. **Comparisons:** In step 1, we check N-1 bins; in step 2, N-2 bins, and so on. This is an arithmetic series summing to N(N-1)/2.
-4. **Scaling:** This quadratic relationship means doubling the bins quadruples the calculation time.
-5. **Final Complexity:** **O(N²)**.
+1. Iteration: We must visit N total bins.
+2. Selection: For every bin visited, the algorithm scans all remaining unvisited bins to find the nearest one.
+3. Comparisons: In step 1, we check N-1 bins; in step 2, N-2 bins, and so on. This is an arithmetic series summing to N(N-1)/2.
+4. Scaling: This quadratic relationship means doubling the bins quadruples the calculation time.
+5. Final Complexity: O(N²).
 `,
         complexity: 'O(N^2) (Heuristic)'
     },
@@ -277,10 +277,10 @@
             'Coordinate adjacent signals to allow platoons of vehicles to move continuously ("green waves").'
         ],
         complexityCode: `
-1. **Inputs:** A standard intersection has a fixed, small number of lanes (e.g., 4, 6, or 8).
-2. **Operation:** The greedy decision logic simply compares the current queue length of these fixed lanes to select the max.
-3. **Scaling:** This calculation does not depend on the total size of the city (V) or total roads (E), only the local intersection configuration.
-4. **Final Complexity:** **O(1)** (Constant Time per decision cycle).
+1. Inputs: A standard intersection has a fixed, small number of lanes (e.g., 4, 6, or 8).
+2. Operation: The greedy decision logic simply compares the current queue length of these fixed lanes to select the max.
+3. Scaling: This calculation does not depend on the total size of the city (V) or total roads (E), only the local intersection configuration.
+4. Final Complexity: O(1) (Constant Time per decision cycle).
 `,
         complexity: 'O(1) (Per Intersection)'
     },
@@ -300,10 +300,10 @@
             'Combine the routes for the entire fleet management.'
         ],
         complexityCode: `
-1. **Decomposition:** The problem is broken down into clusters of deliveries.
-2. **Routing:** Within each cluster, a TSP route must be calculated.
-3. **Dominant Cost:** Even with clustering, the most computationally intensive step is running the TSP heuristic (like Nearest Neighbor) on the nodes. As established previously, this takes quadratic time relative to the number of nodes in the cluster.
-4. **Final Complexity:** **O(N²)** (dominated by the TSP Heuristic).
+1. Decomposition: The problem is broken down into clusters of deliveries.
+2. Routing: Within each cluster, a TSP route must be calculated.
+3. Dominant Cost: Even with clustering, the most computationally intensive step is running the TSP heuristic (like Nearest Neighbor) on the nodes. As established previously, this takes quadratic time relative to the number of nodes in the cluster.
+4. Final Complexity: O(N²) (dominated by the TSP Heuristic).
 `,
         complexity: 'O(N^2) (Heuristic)'
     },
@@ -324,11 +324,11 @@
             'Analyze the <strong>Min-Cut</strong> edges to identify roads that severely limit flow, prioritizing them for emergency management.'
         ],
         complexityCode: `
-1. **Algorithm:** We utilize the Edmonds-Karp Max-Flow algorithm to calculate network capacity.
-2. **Pathfinding:** It repeatedly uses Breadth-First Search (BFS) to find the shortest augmenting path from source to sink. Each BFS takes O(E).
-3. **Augmentation Limit:** In the worst-case scenario, the number of flow augmentations is bounded by O(V * E).
-4. **Calculation:** Total Time = (Time per BFS) * (Max Augmentations) = O(E) * O(VE).
-5. **Final Complexity:** **O(V E²)**.
+1. Algorithm: We utilize the Edmonds-Karp Max-Flow algorithm to calculate network capacity.
+2. Pathfinding: It repeatedly uses Breadth-First Search (BFS) to find the shortest augmenting path from source to sink. Each BFS takes O(E).
+3. Augmentation Limit: In the worst-case scenario, the number of flow augmentations is bounded by O(V * E).
+4. Calculation: Total Time = (Time per BFS) * (Max Augmentations) = O(E) * O(VE).
+5. Final Complexity: O(V E²).
 `,
         complexity: 'O(V E^2) (Max-Flow)'
     },
@@ -348,10 +348,10 @@
             'If a predicted state exceeds road capacity, proactively suggest alternative routes to navigation systems to dissipate the potential jam.'
         ],
         complexityCode: `
-1. **Data Window:** The algorithm operates on a historical dataset window of size N.
-2. **Scanning:** A standard pattern matching or linear regression approach iterates through this data points to find matches or calculate trends.
-3. **Linearity:** The number of operations grows in direct proportion to the size of the historical data window being analyzed.
-4. **Final Complexity:** **O(N)** (Linear Scan).
+1. Data Window: The algorithm operates on a historical dataset window of size N.
+2. Scanning: A standard pattern matching or linear regression approach iterates through this data points to find matches or calculate trends.
+3. Linearity: The number of operations grows in direct proportion to the size of the historical data window being analyzed.
+4. Final Complexity: O(N) (Linear Scan).
 `,
         complexity: 'O(N) (Pattern Scan)'
     }
